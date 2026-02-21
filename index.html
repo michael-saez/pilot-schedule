@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1c1c1e">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Michael's Schedule</title>
+    <script>
+        if (window.navigator.standalone) {
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) window.location.reload();
+            });
+        }
+        setInterval(function() {
+            if (!document.hidden) window.location.reload(true);
+        }, 300000);
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+        .header {
+            background: #1e293b;
+            padding: 20px;
+            padding-top: 50px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+        .header h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+        .header .subtitle { font-size: 13px; color: #94a3b8; }
+        .last-updated { text-align: center; padding: 10px; font-size: 11px; color: #64748b; }
+        .day-header {
+            background: #0f172a;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #60a5fa;
+            border-bottom: 1px solid #1e293b;
+        }
+        .event {
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            border-bottom: 1px solid #334155;
+        }
+        .event-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 14px;
+            flex-shrink: 0;
+            background: transparent;
+            border: 2px solid #64748b;
+            color: #94a3b8;
+        }
+        .event-icon.deadhead {
+            border-color: #475569;
+            color: #64748b;
+        }
+        .event-details { flex: 1; }
+        .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
+        .event-subtitle { font-size: 13px; color: #94a3b8; }
+        .event-time { text-align: right; font-size: 15px; font-weight: 500; }
+        .event-time .local-date {
+            font-size: 11px;
+            color: #60a5fa;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .event-time .day-change {
+            font-size: 11px;
+            color: #475569;
+            font-weight: 500;
+            margin: 4px 0;
+        }
+        .event-time .timezone {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+        .footer { text-align: center; padding: 30px 20px; font-size: 12px; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Michael's Schedule</h1>
+        <div class="subtitle">Cargo Pilot | ANC Base</div>
+    </div>
+    
+    <div class="last-updated">Updated Feb 21, 2026</div>
+    
+    
+    <!-- Thu 19 Feb 2026 -->
+    <div class="day-header">Thu 19 Feb 2026</div>
+    
+    <div class="event">
+        <div class="event-icon jumpseat">🪑</div>
+        <div class="event-details">
+            <div class="event-title">Jumpseat: Albany - Louisville</div>
+            <div class="event-subtitle">1123 | 1/4 booked</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Thu, Feb 19</div>
+            20:48L - 22:57L
+            
+            <div class="timezone">EST</div>
+        </div>
+    </div>
+    
+    
+    <!-- Fri 20 Feb 2026 -->
+    <div class="day-header">Fri 20 Feb 2026</div>
+    
+    <div class="event">
+        <div class="event-icon jumpseat">🪑</div>
+        <div class="event-details">
+            <div class="event-title">Jumpseat: Louisville - Tokyo</div>
+            <div class="event-subtitle">108 | 1/6 booked</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Fri, Feb 20</div>
+            04:38L - 08:20L
+            
+            <div class="day-change">→ Sat, Feb 21</div>
+            
+            <div class="timezone">EST → JST</div>
+        </div>
+    </div>
+    
+    
+    <!-- Sat 21 Feb 2026 -->
+    <div class="day-header">Sat 21 Feb 2026</div>
+    
+    <div class="event">
+        <div class="event-icon flight">🍸</div>
+        <div class="event-details">
+            <div class="event-title">Tokyo Narita - Sapporo</div>
+            <div class="event-subtitle">MM573 | Commercial</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Sat, Feb 21</div>
+            14:30L - 16:20L
+            
+            <div class="timezone">JST</div>
+        </div>
+    </div>
+    
+    
+    <!-- Tue 03 Mar 2026 -->
+    <div class="day-header">Tue 03 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Anchorage</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Tue, Mar 3</div>
+            08:12L - 09:42L
+            
+            <div class="timezone">AKST</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">✈️</div>
+        <div class="event-details">
+            <div class="event-title">Anchorage - Hong Kong</div>
+            <div class="event-subtitle">62 F/O</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Tue, Mar 3</div>
+            09:42L - 06:35L
+            
+            <div class="day-change">→ Wed, Mar 4</div>
+            
+            <div class="timezone">AKST</div>
+        </div>
+    </div>
+    
+    
+    <!-- Wed 04 Mar 2026 -->
+    <div class="day-header">Wed 04 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon layover">🛏️</div>
+        <div class="event-details">
+            <div class="event-title">Layover at Hong Kong</div>
+            <div class="event-subtitle">New World Millennium</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Wed, Mar 4</div>
+            25:55
+            
+            <div class="timezone">duration</div>
+        </div>
+    </div>
+    
+    
+    <!-- Thu 05 Mar 2026 -->
+    <div class="day-header">Thu 05 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Hong Kong</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Thu, Mar 5</div>
+            15:00L - 15:30L
+            
+            <div class="timezone">HKT</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">✈️</div>
+        <div class="event-details">
+            <div class="event-title">Hong Kong - Cologne</div>
+            <div class="event-subtitle">1 F/O2</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Thu, Mar 5</div>
+            15:30L - 21:41L
+            
+            <div class="timezone">HKT</div>
+        </div>
+    </div>
+    
+    
+    <!-- Fri 06 Mar 2026 -->
+    <div class="day-header">Fri 06 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon layover">🛏️</div>
+        <div class="event-details">
+            <div class="event-title">Layover at Cologne</div>
+            <div class="event-subtitle">Cologne Marriott</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Fri, Mar 6</div>
+            31:18
+            
+            <div class="timezone">duration</div>
+        </div>
+    </div>
+    
+    
+    <!-- Sat 07 Mar 2026 -->
+    <div class="day-header">Sat 07 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Cologne</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Sat, Mar 7</div>
+            05:29L
+            
+            <div class="timezone">CET</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">✈️</div>
+        <div class="event-details">
+            <div class="event-title">Cologne - Shenzhen</div>
+            <div class="event-subtitle">14 F/O</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Sat, Mar 7</div>
+            05:29L - 16:10L
+            
+            <div class="timezone">CET</div>
+        </div>
+    </div>
+    
+    
+    <!-- Sun 08 Mar 2026 -->
+    <div class="day-header">Sun 08 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon layover">🛏️</div>
+        <div class="event-details">
+            <div class="event-title">Layover at Shenzhen</div>
+            <div class="event-subtitle">JW Marriott Shenzhen</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Sun, Mar 8</div>
+            53:35
+            
+            <div class="timezone">duration</div>
+        </div>
+    </div>
+    
+    
+    <!-- Mon 09 Mar 2026 -->
+    <div class="day-header">Mon 09 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Shenzhen</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Mon, Mar 9</div>
+            05:45L
+            
+            <div class="timezone">CST</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">✈️</div>
+        <div class="event-details">
+            <div class="event-title">Shenzhen - Anchorage</div>
+            <div class="event-subtitle">71 F/O</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Mon, Mar 9</div>
+            05:45L - 07:28L
+            
+            <div class="timezone">CST</div>
+        </div>
+    </div>
+    
+    
+    <!-- Sun 15 Mar 2026 -->
+    <div class="day-header">Sun 15 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Anchorage</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Sun, Mar 15</div>
+            22:58L
+            
+            <div class="timezone">AKDT</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">✈️</div>
+        <div class="event-details">
+            <div class="event-title">Anchorage - Louisville</div>
+            <div class="event-subtitle">71 F/O</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Sun, Mar 15</div>
+            22:58L - 14:33L
+            
+            <div class="day-change">→ Mon, Mar 16</div>
+            
+            <div class="timezone">AKDT</div>
+        </div>
+    </div>
+    
+    
+    <!-- Mon 16 Mar 2026 -->
+    <div class="day-header">Mon 16 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon layover">🛏️</div>
+        <div class="event-details">
+            <div class="event-title">Layover at Louisville</div>
+            <div class="event-subtitle">Galt House</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Mon, Mar 16</div>
+            18:15
+            
+            <div class="timezone">duration</div>
+        </div>
+    </div>
+    
+    
+    <!-- Tue 17 Mar 2026 -->
+    <div class="day-header">Tue 17 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Louisville</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Tue, Mar 17</div>
+            01:48L
+            
+            <div class="timezone">EDT</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">✈️</div>
+        <div class="event-details">
+            <div class="event-title">Louisville - Tokyo</div>
+            <div class="event-subtitle">108 F/O2</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Tue, Mar 17</div>
+            01:48L - 22:30L
+            
+            <div class="day-change">→ Wed, Mar 18</div>
+            
+            <div class="timezone">EDT</div>
+        </div>
+    </div>
+    
+    
+    <!-- Wed 18 Mar 2026 -->
+    <div class="day-header">Wed 18 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon layover">🛏️</div>
+        <div class="event-details">
+            <div class="event-title">Layover at Tokyo</div>
+            <div class="event-subtitle">Hilton Narita</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Wed, Mar 18</div>
+            38:25
+            
+            <div class="timezone">duration</div>
+        </div>
+    </div>
+    
+    
+    <!-- Thu 19 Mar 2026 -->
+    <div class="day-header">Thu 19 Mar 2026</div>
+    
+    <div class="event">
+        <div class="event-icon report">🕐</div>
+        <div class="event-details">
+            <div class="event-title">Report</div>
+            <div class="event-subtitle">Tokyo</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Thu, Mar 19</div>
+            21:55L
+            
+            <div class="timezone">JST</div>
+        </div>
+    </div>
+    
+    <div class="event">
+        <div class="event-icon flight">😴</div>
+        <div class="event-details">
+            <div class="event-title">Deadhead: Tokyo - Anchorage</div>
+            <div class="event-subtitle">109 DH</div>
+        </div>
+        <div class="event-time">
+            <div class="local-date">Thu, Mar 19</div>
+            21:55L - 19:58L
+            
+            <div class="day-change">→ Fri, Mar 20</div>
+            
+            <div class="timezone">JST</div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="footer">
+        Auto-updated schedule 🦞<br>
+        Send screenshots to update
+    </div>
+</body>
+</html>
