@@ -114,7 +114,7 @@
         <div class="subtitle">Cargo Pilot | ANC Base</div>
     </div>
     
-    <div class="last-updated">Updated Feb 24, 2026</div>
+    <div class="last-updated">Updated Feb 25, 2026</div>
     
     
     <!-- Thu 19 Feb 2026 -->
@@ -516,8 +516,11 @@
 
     <script>
         (function() {
-            // Get today's date in YYYY-MM-DD format (UTC)
-            const today = new Date().toISOString().split('T')[0];
+            // Get today's date in YYYY-MM-DD format (local timezone)
+            const now = new Date();
+            const today = now.getFullYear() + '-' + 
+                         String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                         String(now.getDate()).padStart(2, '0');
 
             // Mark past events
             document.querySelectorAll('.event').forEach(function(el) {
@@ -531,29 +534,34 @@
             const allEvents = document.querySelectorAll('.event');
             let pastCount = 0;
             let scrollTarget = null;
+            let firstFutureIndex = -1;
 
             for (let i = 0; i < allEvents.length; i++) {
                 const eventDate = allEvents[i].getAttribute('data-date');
                 if (eventDate && eventDate < today) {
                     pastCount++;
-                    // Keep track of the 2nd past event (we want to scroll past it)
-                    if (pastCount === 2) {
-                        scrollTarget = allEvents[i];
-                    }
-                } else if (eventDate && eventDate >= today) {
-                    // This is a future/current event
-                    if (pastCount < 2) {
-                        // If we have fewer than 2 past events, scroll to show this at position 3
-                        scrollTarget = allEvents[Math.max(0, i - 2)];
-                    }
+                } else if (eventDate && eventDate >= today && firstFutureIndex === -1) {
+                    firstFutureIndex = i;
                     break;
                 }
+            }
+
+            // Determine scroll target:
+            // - If we have 2+ past events: scroll to the 3rd event from start (index 2)
+            // - If we have 1 past event: scroll to 2nd event (index 1) so 1 past + future visible
+            // - If no past events: scroll to top (index 0)
+            // Goal: at most 2 past events visible, next upcoming at position 3
+            if (firstFutureIndex > 0) {
+                // We have past events, scroll so first future is at position 3
+                // That means we want events at indices (firstFutureIndex - 2) to (firstFutureIndex + visible - 3)
+                const targetIndex = Math.max(0, firstFutureIndex - 2);
+                scrollTarget = allEvents[targetIndex];
             }
 
             // Auto-scroll to position the view
             if (scrollTarget) {
                 // Scroll so the target is at the top, leaving room for header
-                const headerOffset = 120; // Account for header + some padding
+                const headerOffset = 140; // Account for header + day header + padding
                 const elementPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
 
