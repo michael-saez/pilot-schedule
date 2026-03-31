@@ -1,1 +1,319 @@
-404: Not Found
+{
+  "lastUpdated": "2026-04-01T12:00:00Z",
+  "pilot": "Michael Saez",
+  "base": "ANC",
+  "trips": [
+    {
+      "tripNumber": "JS-UPS0105",
+      "aircraft": null,
+      "totalDuration": "1d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS0105",
+          "position": "JS",
+          "route": "ANC - SDF",
+          "startDateLT": "2026-04-01",
+          "startTimeLT": "14:25",
+          "endDateLT": "2026-04-02",
+          "endTimeLT": "00:49",
+          "blockHours": null
+        }
+      ]
+    },
+    {
+      "tripNumber": "JS-UPS1112",
+      "aircraft": null,
+      "totalDuration": "1d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS1112",
+          "position": "JS",
+          "route": "SDF - JFK",
+          "startDateLT": "2026-04-02",
+          "startTimeLT": "03:49",
+          "endDateLT": "2026-04-02",
+          "endTimeLT": "05:36",
+          "blockHours": null
+        }
+      ]
+    },
+    {
+      "tripNumber": "49220",
+      "aircraft": "747",
+      "totalDuration": "3d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS64",
+          "position": "DH",
+          "route": "ANC - ICN",
+          "startDateLT": "2026-03-31",
+          "startTimeLT": "09:37",
+          "endDateLT": "2026-04-01",
+          "endTimeLT": "11:25",
+          "blockHours": null
+        },
+        {
+          "type": "layover",
+          "hotel": "Sheraton Incheon",
+          "city": "ICN",
+          "startDateLT": "2026-04-01",
+          "startTimeLT": "02:55",
+          "endDateLT": "2026-04-02",
+          "endTimeLT": "06:15",
+          "duration": "27:20h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS67",
+          "position": "R/O",
+          "route": "ICN - ANC",
+          "startDateLT": "2026-04-02",
+          "startTimeLT": "16:45",
+          "endDateLT": "2026-04-02",
+          "endTimeLT": "07:46",
+          "blockHours": "8:01h"
+        }
+      ]
+    },
+    {
+      "tripNumber": "21769",
+      "aircraft": "747",
+      "totalDuration": "5d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS62",
+          "position": "R/O",
+          "route": "ANC - HKG",
+          "startDateLT": "2026-04-11",
+          "startTimeLT": "11:38",
+          "endDateLT": "2026-04-12",
+          "endTimeLT": "14:40",
+          "blockHours": "11:02h"
+        },
+        {
+          "type": "layover",
+          "hotel": "New World Millennium",
+          "city": "HKG",
+          "startDateLT": "2026-04-12",
+          "startTimeLT": "07:10",
+          "endDateLT": "2026-04-15",
+          "endTimeLT": "00:45",
+          "duration": "65:35h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS67",
+          "position": "F/O",
+          "route": "HKG - ANC",
+          "startDateLT": "2026-04-15",
+          "startTimeLT": "10:15",
+          "endDateLT": "2026-04-15",
+          "endTimeLT": "04:01",
+          "blockHours": "9:46h"
+        }
+      ]
+    },
+    {
+      "tripNumber": "A70674",
+      "aircraft": "747",
+      "totalDuration": "6d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS62",
+          "position": "F/O",
+          "route": "ANC - HKG",
+          "startDateLT": "2026-04-17",
+          "startTimeLT": "09:53",
+          "endDateLT": "2026-04-18",
+          "endTimeLT": "12:55",
+          "blockHours": "11:02h"
+        },
+        {
+          "type": "layover",
+          "hotel": "New World Millennium",
+          "city": "HKG",
+          "startDateLT": "2026-04-18",
+          "startTimeLT": "05:25",
+          "endDateLT": "2026-04-20",
+          "endTimeLT": "07:05",
+          "duration": "49:40h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS61",
+          "position": "DH",
+          "route": "HKG - TPE",
+          "startDateLT": "2026-04-20",
+          "startTimeLT": "16:05",
+          "endDateLT": "2026-04-20",
+          "endTimeLT": "17:50",
+          "blockHours": null
+        },
+        {
+          "type": "layover",
+          "hotel": "Sheraton Taipei",
+          "city": "TPE",
+          "startDateLT": "2026-04-20",
+          "startTimeLT": "10:20",
+          "endDateLT": "2026-04-22",
+          "endTimeLT": "10:40",
+          "duration": "48:20h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS61",
+          "position": "F/O",
+          "route": "TPE - ANC",
+          "startDateLT": "2026-04-22",
+          "startTimeLT": "20:10",
+          "endDateLT": "2026-04-22",
+          "endTimeLT": "13:02",
+          "blockHours": "8:52h"
+        }
+      ]
+    },
+    {
+      "tripNumber": "A70621",
+      "aircraft": "747",
+      "totalDuration": "5d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS109",
+          "position": "F/O",
+          "route": "ANC - SDF",
+          "startDateLT": "2026-04-28",
+          "startTimeLT": "14:28",
+          "endDateLT": "2026-04-29",
+          "endTimeLT": "00:35",
+          "blockHours": "6:07h"
+        },
+        {
+          "type": "layover",
+          "hotel": "Galt House",
+          "city": "SDF",
+          "startDateLT": "2026-04-29",
+          "startTimeLT": "05:05",
+          "endDateLT": "2026-04-30",
+          "endTimeLT": "07:35",
+          "duration": "26:30h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS108",
+          "position": "R/O",
+          "route": "SDF - NRT",
+          "startDateLT": "2026-04-30",
+          "startTimeLT": "05:05",
+          "endDateLT": "2026-05-01",
+          "endTimeLT": "07:30",
+          "blockHours": "13:25h"
+        },
+        {
+          "type": "layover",
+          "hotel": "Hilton Narita UPS Only",
+          "city": "NRT",
+          "startDateLT": "2026-04-30",
+          "startTimeLT": "23:00",
+          "endDateLT": "2026-05-02",
+          "endTimeLT": "11:25",
+          "duration": "36:25h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS109",
+          "position": "DH",
+          "route": "NRT - ANC",
+          "startDateLT": "2026-05-02",
+          "startTimeLT": "21:55",
+          "endDateLT": "2026-05-02",
+          "endTimeLT": "10:32",
+          "blockHours": null
+        }
+      ]
+    },
+    {
+      "tripNumber": "A70539",
+      "aircraft": "747",
+      "totalDuration": "4d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS80",
+          "position": "F/O",
+          "route": "ANC - PVG",
+          "startDateLT": "2026-05-09",
+          "startTimeLT": "10:45",
+          "endDateLT": "2026-05-10",
+          "endTimeLT": "12:10",
+          "blockHours": "9:25h"
+        },
+        {
+          "type": "layover",
+          "hotel": "Conrad Shanghai",
+          "city": "PVG",
+          "startDateLT": "2026-05-10",
+          "startTimeLT": "04:40",
+          "endDateLT": "2026-05-12",
+          "endTimeLT": "11:35",
+          "duration": "54:55h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS81",
+          "position": "F/O",
+          "route": "PVG - ANC",
+          "startDateLT": "2026-05-12",
+          "startTimeLT": "21:05",
+          "endDateLT": "2026-05-12",
+          "endTimeLT": "13:49",
+          "blockHours": "8:44h"
+        }
+      ]
+    },
+    {
+      "tripNumber": "A70556",
+      "aircraft": "747",
+      "totalDuration": "4d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS64",
+          "position": "F/O",
+          "route": "ANC - HKG",
+          "startDateLT": "2026-05-15",
+          "startTimeLT": "11:23",
+          "endDateLT": "2026-05-16",
+          "endTimeLT": "14:25",
+          "blockHours": "11:02h"
+        },
+        {
+          "type": "layover",
+          "hotel": "New World Millennium",
+          "city": "HKG",
+          "startDateLT": "2026-05-16",
+          "startTimeLT": "06:55",
+          "endDateLT": "2026-05-18",
+          "endTimeLT": "10:15",
+          "duration": "51:20h"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS59",
+          "position": "R/O",
+          "route": "HKG - ANC",
+          "startDateLT": "2026-05-18",
+          "startTimeLT": "19:45",
+          "endDateLT": "2026-05-18",
+          "endTimeLT": "12:36",
+          "blockHours": "9:51h"
+        }
+      ]
+    }
+  ]
+}
