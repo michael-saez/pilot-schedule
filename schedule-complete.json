@@ -4,37 +4,37 @@
   "base": "ANC",
   "trips": [
     {
-      "tripNumber": "JS-UPS0105",
+      "tripNumber": "JS-UPS0062",
       "aircraft": null,
       "totalDuration": "1d",
       "events": [
         {
           "type": "flight",
-          "flightNumber": "UPS0105",
+          "flightNumber": "UPS0062",
           "position": "JS",
-          "route": "ANC - SDF",
-          "startDateLT": "2026-04-01",
-          "startTimeLT": "14:25",
+          "route": "ANC - HKG",
+          "startDateLT": "2026-04-02",
+          "startTimeLT": "09:53",
           "endDateLT": "2026-04-02",
-          "endTimeLT": "00:49",
+          "endTimeLT": "12:55",
           "blockHours": null
         }
       ]
     },
     {
-      "tripNumber": "JS-UPS1112",
+      "tripNumber": "JS-UPS0099",
       "aircraft": null,
       "totalDuration": "1d",
       "events": [
         {
           "type": "flight",
-          "flightNumber": "UPS1112",
+          "flightNumber": "UPS0099",
           "position": "JS",
-          "route": "SDF - JFK",
+          "route": "ANC - SDF",
           "startDateLT": "2026-04-02",
-          "startTimeLT": "03:49",
-          "endDateLT": "2026-04-02",
-          "endTimeLT": "05:36",
+          "startTimeLT": "14:46",
+          "endDateLT": "2026-04-03",
+          "endTimeLT": "00:53",
           "blockHours": null
         }
       ]
@@ -317,4 +317,3 @@
     }
   ]
 }
-
