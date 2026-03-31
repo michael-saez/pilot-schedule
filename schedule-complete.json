@@ -1,8 +1,44 @@
 {
-  "lastUpdated": "2026-03-31T06:50:00Z",
+  "lastUpdated": "2026-04-01T12:00:00Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
+    {
+      "tripNumber": "JS-UPS0105",
+      "aircraft": null,
+      "totalDuration": "1d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS0105",
+          "position": "JS",
+          "route": "ANC - SDF",
+          "startDateLT": "2026-04-01",
+          "startTimeLT": "14:25",
+          "endDateLT": "2026-04-02",
+          "endTimeLT": "00:49",
+          "blockHours": null
+        }
+      ]
+    },
+    {
+      "tripNumber": "JS-UPS1112",
+      "aircraft": null,
+      "totalDuration": "1d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS1112",
+          "position": "JS",
+          "route": "SDF - JFK",
+          "startDateLT": "2026-04-02",
+          "startTimeLT": "03:49",
+          "endDateLT": "2026-04-02",
+          "endTimeLT": "05:36",
+          "blockHours": null
+        }
+      ]
+    },
     {
       "tripNumber": "49220",
       "aircraft": "747",

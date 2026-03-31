@@ -67,6 +67,7 @@
         }
         .event-icon.flight { border-color: #3b82f6; color: #3b82f6; }
         .event-icon.layover { border-color: #8b5cf6; color: #8b5cf6; }
+        .event-icon.jumpseat { border-color: #f59e0b; color: #f59e0b; }
         .event-icon.deadhead { border-color: #475569; color: #64748b; }
         .event-details { flex: 1; }
         .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
@@ -187,8 +188,15 @@
                     let eventHTML = '';
 
                     if (event.type === 'flight') {
-                        const icon = event.position === 'DH' ? '😴' : '✈️';
-                        const iconClass = event.position === 'DH' ? 'deadhead' : 'flight';
+                        let icon = '✈️';
+                        let iconClass = 'flight';
+                        if (event.position === 'DH') {
+                            icon = '😴';
+                            iconClass = 'deadhead';
+                        } else if (event.position === 'JS') {
+                            icon = '🪑';
+                            iconClass = 'jumpseat';
+                        }
                         const dateObj = new Date(event.startDateLT + 'T00:00:00Z');
                         const displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
