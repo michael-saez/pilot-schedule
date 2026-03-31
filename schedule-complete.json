@@ -4,6 +4,24 @@
   "base": "ANC",
   "trips": [
     {
+      "tripNumber": "JS-UPS0099",
+      "aircraft": null,
+      "totalDuration": "1d",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS0099",
+          "position": "JS",
+          "route": "ANC - SDF",
+          "startDateLT": "2026-04-02",
+          "startTimeLT": "14:46",
+          "endDateLT": "2026-04-03",
+          "endTimeLT": "00:53",
+          "blockHours": null
+        }
+      ]
+    },
+    {
       "tripNumber": "JS-UPS1114",
       "aircraft": null,
       "totalDuration": "1d",
