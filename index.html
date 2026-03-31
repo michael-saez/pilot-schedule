@@ -180,7 +180,7 @@
 
             // Render each date
             Object.keys(eventsByDate).sort().forEach(dateStr => {
-                const date = new Date(dateStr + 'T00:00:00Z');
+                const date = new Date(dateStr + 'T00:00:00');
                 const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
                 const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                 const year = date.getFullYear();
