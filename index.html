@@ -153,14 +153,20 @@
                     const dateToUse = event.startDateLT;
                     allEvents.push({
                         date: dateToUse,
+                        time: event.startTimeLT,
                         event: event,
                         trip: trip
                     });
                 });
             });
 
-            // Sort by date
-            allEvents.sort((a, b) => a.date.localeCompare(b.date));
+            // Sort by date AND time for proper chronological order
+            allEvents.sort((a, b) => {
+                const dateCompare = a.date.localeCompare(b.date);
+                if (dateCompare !== 0) return dateCompare;
+                // Same date, sort by time
+                return a.time.localeCompare(b.time);
+            });
 
             // Group by date
             const eventsByDate = {};
