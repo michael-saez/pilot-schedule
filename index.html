@@ -204,7 +204,7 @@
                             icon = '🪑';
                             iconClass = 'jumpseat';
                         }
-                        const dateObj = new Date(event.startDateLT + 'T00:00:00Z');
+                        const dateObj = new Date(event.startDateLT + 'T00:00:00');
                         const displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
                         let subtitle = `${event.flightNumber} | ${event.position}`;
@@ -213,8 +213,8 @@
                         }
 
                         // Format start and end dates/times
-                        const startDate = new Date(event.startDateLT + 'T00:00:00Z');
-                        const endDate = new Date(event.endDateLT + 'T00:00:00Z');
+                        const startDate = new Date(event.startDateLT + 'T00:00:00');
+                        const endDate = new Date(event.endDateLT + 'T00:00:00');
                         const startDisplay = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                         const endDisplay = endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                         const spansMultipleDays = event.startDateLT !== event.endDateLT;
@@ -240,7 +240,7 @@
                             </div>
                         `;
                     } else if (event.type === 'layover') {
-                        const dateObj = new Date(event.startDateLT + 'T00:00:00Z');
+                        const dateObj = new Date(event.startDateLT + 'T00:00:00');
                         const displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
                         eventHTML = `
