@@ -197,6 +197,20 @@
                             subtitle += ` | ${event.blockHours}`;
                         }
 
+                        // Format start and end dates/times
+                        const startDate = new Date(event.startDateLT + 'T00:00:00Z');
+                        const endDate = new Date(event.endDateLT + 'T00:00:00Z');
+                        const startDisplay = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        const endDisplay = endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        const spansMultipleDays = event.startDateLT !== event.endDateLT;
+
+                        let timeDisplay = '';
+                        if (spansMultipleDays) {
+                            timeDisplay = `${startDisplay} ${event.startTimeLT} → ${endDisplay} ${event.endTimeLT}`;
+                        } else {
+                            timeDisplay = `${event.startTimeLT} → ${event.endTimeLT}`;
+                        }
+
                         eventHTML = `
                             <div class="event ${pastClass}" data-date="${event.startDateLT}">
                                 <div class="event-icon ${iconClass}">${icon}</div>
@@ -206,7 +220,7 @@
                                 </div>
                                 <div class="event-time">
                                     <div class="local-date">${displayDate}</div>
-                                    ${event.startTimeLT} - ${event.endTimeLT}
+                                    ${timeDisplay}
                                 </div>
                             </div>
                         `;
