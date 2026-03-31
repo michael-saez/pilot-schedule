@@ -65,10 +65,9 @@
             border: 2px solid #64748b;
             color: #94a3b8;
         }
-        .event-icon.deadhead {
-            border-color: #475569;
-            color: #64748b;
-        }
+        .event-icon.flight { border-color: #3b82f6; color: #3b82f6; }
+        .event-icon.layover { border-color: #8b5cf6; color: #8b5cf6; }
+        .event-icon.deadhead { border-color: #475569; color: #64748b; }
         .event-details { flex: 1; }
         .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
         .event-subtitle { font-size: 13px; color: #94a3b8; }
@@ -106,6 +105,8 @@
             color: #64748b;
         }
         .footer { text-align: center; padding: 30px 20px; font-size: 12px; color: #64748b; }
+        .loading { text-align: center; padding: 40px 20px; }
+        .error { text-align: center; padding: 40px 20px; color: #ef4444; }
     </style>
 </head>
 <body>
@@ -113,449 +114,133 @@
         <h1>Michael's Schedule</h1>
         <div class="subtitle">Cargo Pilot | ANC Base</div>
     </div>
-    
-    <div class="last-updated">Updated Mar 04, 2026</div>
-    
-    
-    <!-- Thu 19 Feb 2026 -->
-    <div class="day-header" data-date="2026-02-19">Thu 19 Feb 2026</div>
-    
-    <div class="event" data-date="2026-02-19">
-        <div class="event-icon jumpseat">🪑</div>
-        <div class="event-details">
-            <div class="event-title">Jumpseat: Albany - Louisville</div>
-            <div class="event-subtitle">1123 | 1/4 booked</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Thu, Feb 19</div>
-            20:48L - 22:57L
-            
-            <div class="timezone">EST</div>
-        </div>
-    </div>
-    
-    
-    <!-- Fri 20 Feb 2026 -->
-    <div class="day-header" data-date="2026-02-20">Fri 20 Feb 2026</div>
-    
-    <div class="event" data-date="2026-02-20">
-        <div class="event-icon jumpseat">🪑</div>
-        <div class="event-details">
-            <div class="event-title">Jumpseat: Louisville - Tokyo</div>
-            <div class="event-subtitle">108 | 1/6 booked</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Fri, Feb 20</div>
-            04:38L - 08:20L
-            
-            <div class="day-change">→ Sat, Feb 21</div>
-            
-            <div class="timezone">EST → JST</div>
-        </div>
-    </div>
-    
-    
-    <!-- Sat 21 Feb 2026 -->
-    <div class="day-header" data-date="2026-02-21">Sat 21 Feb 2026</div>
-    
-    <div class="event" data-date="2026-02-21">
-        <div class="event-icon flight">🍸</div>
-        <div class="event-details">
-            <div class="event-title">Tokyo Narita - Sapporo</div>
-            <div class="event-subtitle">MM573 | Commercial</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Sat, Feb 21</div>
-            14:30L - 16:20L
-            
-            <div class="timezone">JST</div>
-        </div>
-    </div>
-    
-    
-    <!-- Mon 02 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-02">Mon 02 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-02">
-        <div class="event-icon flight">🍸</div>
-        <div class="event-details">
-            <div class="event-title">Sapporo - Tokyo Narita</div>
-            <div class="event-subtitle">GK114 | Commercial</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Mon, Mar 2</div>
-            15:30L - 17:20L
-            
-            <div class="timezone">JST</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-02">
-        <div class="event-icon jumpseat">🪑</div>
-        <div class="event-details">
-            <div class="event-title">Jumpseat: Tokyo - Anchorage</div>
-            <div class="event-subtitle">UPS0109 | 2/7 booked</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Mon, Mar 2</div>
-            21:50L - 10:23L
-            
-            <div class="day-change">→ Tue, Mar 3</div>
-            
-            <div class="timezone">JST → AKST</div>
-        </div>
-    </div>
-    
-    
-    <!-- Tue 03 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-03">Tue 03 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-03">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Anchorage</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Tue, Mar 3</div>
-            08:12L - 08:42L
-            
-            <div class="timezone">AKST</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-03">
-        <div class="event-icon flight">✈️</div>
-        <div class="event-details">
-            <div class="event-title">Anchorage - Hong Kong</div>
-            <div class="event-subtitle">62 F/O</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Tue, Mar 3</div>
-            09:42L - 06:35L
-            
-            <div class="day-change">→ Wed, Mar 4</div>
-            
-            <div class="timezone">AKST</div>
-        </div>
-    </div>
-    
-    
-    <!-- Wed 04 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-04">Wed 04 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-04">
-        <div class="event-icon layover">🛏️</div>
-        <div class="event-details">
-            <div class="event-title">Layover at Hong Kong</div>
-            <div class="event-subtitle">New World Millennium</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Wed, Mar 4</div>
-            25:55
-            
-            <div class="timezone">duration</div>
-        </div>
-    </div>
-    
-    
-    <!-- Thu 05 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-05">Thu 05 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-05">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Hong Kong</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Thu, Mar 5</div>
-            15:00L - 15:30L
-            
-            <div class="timezone">HKT</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-05">
-        <div class="event-icon flight">✈️</div>
-        <div class="event-details">
-            <div class="event-title">Hong Kong - Cologne</div>
-            <div class="event-subtitle">1 F/O2</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Thu, Mar 5</div>
-            16:30L - 22:41L
-            
-            <div class="day-change">→ Thu, Mar 5</div>
-            
-            <div class="timezone">HKT → CET</div>
-        </div>
-    </div>
-    
-    
-    <!-- Fri 06 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-06">Fri 06 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-06">
-        <div class="event-icon layover">🛏️</div>
-        <div class="event-details">
-            <div class="event-title">Layover at Cologne</div>
-            <div class="event-subtitle">Cologne Marriott</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Fri, Mar 6</div>
-            31:18
-            
-            <div class="timezone">duration</div>
-        </div>
-    </div>
-    
-    
-    <!-- Sat 07 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-07">Sat 07 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-07">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Cologne</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Sat, Mar 7</div>
-            03:59L - 04:29L
-            
-            <div class="timezone">CET</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-07">
-        <div class="event-icon flight">✈️</div>
-        <div class="event-details">
-            <div class="event-title">Cologne - Shenzhen</div>
-            <div class="event-subtitle">14 F/O</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Sat, Mar 7</div>
-            05:29L - 16:10L
-            
-            <div class="timezone">CET</div>
-        </div>
-    </div>
-    
-    
-    <!-- Sun 08 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-08">Sun 08 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-08">
-        <div class="event-icon layover">🛏️</div>
-        <div class="event-details">
-            <div class="event-title">Layover at Shenzhen</div>
-            <div class="event-subtitle">JW Marriott Shenzhen</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Sun, Mar 8</div>
-            53:35
-            
-            <div class="timezone">duration</div>
-        </div>
-    </div>
-    
-    
-    <!-- Mon 09 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-09">Mon 09 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-09">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Shenzhen</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Mon, Mar 9</div>
-            04:15L - 04:45L
-            
-            <div class="timezone">CST</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-09">
-        <div class="event-icon flight">✈️</div>
-        <div class="event-details">
-            <div class="event-title">Shenzhen - Anchorage</div>
-            <div class="event-subtitle">71 F/O</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Mon, Mar 9</div>
-            05:45L - 07:28L
-            
-            <div class="timezone">CST</div>
-        </div>
-    </div>
-    
-    
-    <!-- Sun 15 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-15">Sun 15 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-15">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Anchorage</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Sun, Mar 15</div>
-            21:28L - 21:58L
-            
-            <div class="timezone">AKDT</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-15">
-        <div class="event-icon flight">✈️</div>
-        <div class="event-details">
-            <div class="event-title">Anchorage - Louisville</div>
-            <div class="event-subtitle">71 F/O</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Sun, Mar 15</div>
-            22:58L - 14:33L
-            
-            <div class="day-change">→ Mon, Mar 16</div>
-            
-            <div class="timezone">AKDT</div>
-        </div>
-    </div>
-    
-    
-    <!-- Mon 16 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-16">Mon 16 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-16">
-        <div class="event-icon layover">🛏️</div>
-        <div class="event-details">
-            <div class="event-title">Layover at Louisville</div>
-            <div class="event-subtitle">Galt House</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Mon, Mar 16</div>
-            18:15
-            
-            <div class="timezone">duration</div>
-        </div>
-    </div>
-    
-    
-    <!-- Tue 17 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-17">Tue 17 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-17">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Louisville</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Tue, Mar 17</div>
-            00:18L - 00:48L
-            
-            <div class="timezone">EDT</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-17">
-        <div class="event-icon flight">✈️</div>
-        <div class="event-details">
-            <div class="event-title">Louisville - Tokyo</div>
-            <div class="event-subtitle">108 F/O2</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Tue, Mar 17</div>
-            01:48L - 22:30L
-            
-            <div class="day-change">→ Wed, Mar 18</div>
-            
-            <div class="timezone">EDT</div>
-        </div>
-    </div>
-    
-    
-    <!-- Wed 18 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-18">Wed 18 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-18">
-        <div class="event-icon layover">🛏️</div>
-        <div class="event-details">
-            <div class="event-title">Layover at Tokyo</div>
-            <div class="event-subtitle">Hilton Narita</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Wed, Mar 18</div>
-            38:25
-            
-            <div class="timezone">duration</div>
-        </div>
-    </div>
-    
-    
-    <!-- Thu 19 Mar 2026 -->
-    <div class="day-header" data-date="2026-03-19">Thu 19 Mar 2026</div>
-    
-    <div class="event" data-date="2026-03-19">
-        <div class="event-icon report">🕐</div>
-        <div class="event-details">
-            <div class="event-title">Report</div>
-            <div class="event-subtitle">Tokyo</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Thu, Mar 19</div>
-            20:25L - 20:55L
-            
-            <div class="timezone">JST</div>
-        </div>
-    </div>
-    
-    <div class="event" data-date="2026-03-19">
-        <div class="event-icon flight">😴</div>
-        <div class="event-details">
-            <div class="event-title">Deadhead: Tokyo - Anchorage</div>
-            <div class="event-subtitle">109 DH</div>
-        </div>
-        <div class="event-time">
-            <div class="local-date">Thu, Mar 19</div>
-            21:55L - 19:58L
-            
-            <div class="day-change">→ Fri, Mar 20</div>
-            
-            <div class="timezone">JST</div>
-        </div>
-    </div>
-    
-    
+
+    <div class="last-updated" id="lastUpdated">Loading...</div>
+    <div id="schedule"></div>
 
     <script>
-        (function() {
-            // Get today's date in YYYY-MM-DD format (local timezone)
+        async function loadSchedule() {
+            try {
+                const response = await fetch('schedule-complete.json');
+                if (!response.ok) throw new Error('Failed to load schedule');
+
+                const data = await response.json();
+                renderSchedule(data);
+            } catch (error) {
+                console.error('Error loading schedule:', error);
+                document.getElementById('schedule').innerHTML =
+                    '<div class="error">Error loading schedule. Please refresh the page.</div>';
+            }
+        }
+
+        function renderSchedule(data) {
+            const scheduleDiv = document.getElementById('schedule');
+            const lastUpdatedDiv = document.getElementById('lastUpdated');
+
+            const lastUpdated = new Date(data.lastUpdated);
+            lastUpdatedDiv.textContent = `Updated ${lastUpdated.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}`;
+
             const now = new Date();
-            const today = now.getFullYear() + '-' + 
-                         String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+            const today = now.getFullYear() + '-' +
+                         String(now.getMonth() + 1).padStart(2, '0') + '-' +
                          String(now.getDate()).padStart(2, '0');
 
-            // Mark past events
-            document.querySelectorAll('.event').forEach(function(el) {
-                const eventDate = el.getAttribute('data-date');
-                if (eventDate && eventDate < today) {
-                    el.classList.add('past');
-                }
+            // Collect all events with their dates
+            const allEvents = [];
+            data.trips.forEach(trip => {
+                trip.events.forEach(event => {
+                    const dateToUse = event.startDateLT;
+                    allEvents.push({
+                        date: dateToUse,
+                        event: event,
+                        trip: trip
+                    });
+                });
             });
 
-            // Find the scroll target: up to 2 past events visible, next event at position 3
-            const allEvents = document.querySelectorAll('.event');
+            // Sort by date
+            allEvents.sort((a, b) => a.date.localeCompare(b.date));
+
+            // Group by date
+            const eventsByDate = {};
+            allEvents.forEach(item => {
+                if (!eventsByDate[item.date]) {
+                    eventsByDate[item.date] = [];
+                }
+                eventsByDate[item.date].push(item);
+            });
+
+            // Render each date
+            Object.keys(eventsByDate).sort().forEach(dateStr => {
+                const date = new Date(dateStr + 'T00:00:00Z');
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                const year = date.getFullYear();
+
+                scheduleDiv.innerHTML += `<div class="day-header" data-date="${dateStr}">${dayName} ${monthDay} ${year}</div>`;
+
+                eventsByDate[dateStr].forEach(item => {
+                    const event = item.event;
+                    const isPast = dateStr < today;
+                    const pastClass = isPast ? 'past' : '';
+
+                    let eventHTML = '';
+
+                    if (event.type === 'flight') {
+                        const icon = event.position === 'DH' ? '😴' : '✈️';
+                        const iconClass = event.position === 'DH' ? 'deadhead' : 'flight';
+                        const dateObj = new Date(event.startDateLT + 'T00:00:00Z');
+                        const displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
+                        let subtitle = `${event.flightNumber} | ${event.position}`;
+                        if (event.blockHours) {
+                            subtitle += ` | ${event.blockHours}`;
+                        }
+
+                        eventHTML = `
+                            <div class="event ${pastClass}" data-date="${event.startDateLT}">
+                                <div class="event-icon ${iconClass}">${icon}</div>
+                                <div class="event-details">
+                                    <div class="event-title">${event.route}</div>
+                                    <div class="event-subtitle">${subtitle}</div>
+                                </div>
+                                <div class="event-time">
+                                    <div class="local-date">${displayDate}</div>
+                                    ${event.startTimeLT} - ${event.endTimeLT}
+                                </div>
+                            </div>
+                        `;
+                    } else if (event.type === 'layover') {
+                        const dateObj = new Date(event.startDateLT + 'T00:00:00Z');
+                        const displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
+                        eventHTML = `
+                            <div class="event ${pastClass}" data-date="${event.startDateLT}">
+                                <div class="event-icon layover">🛏️</div>
+                                <div class="event-details">
+                                    <div class="event-title">Layover at ${event.city}</div>
+                                    <div class="event-subtitle">${event.hotel}</div>
+                                </div>
+                                <div class="event-time">
+                                    <div class="local-date">${displayDate}</div>
+                                    ${event.duration}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    scheduleDiv.innerHTML += eventHTML;
+                });
+            });
+
+            // Auto-scroll logic
+            const allEventElements = document.querySelectorAll('.event');
             let pastCount = 0;
             let scrollTarget = null;
             let firstFutureIndex = -1;
 
-            for (let i = 0; i < allEvents.length; i++) {
-                const eventDate = allEvents[i].getAttribute('data-date');
+            for (let i = 0; i < allEventElements.length; i++) {
+                const eventDate = allEventElements[i].getAttribute('data-date');
                 if (eventDate && eventDate < today) {
                     pastCount++;
                 } else if (eventDate && eventDate >= today && firstFutureIndex === -1) {
@@ -564,22 +249,13 @@
                 }
             }
 
-            // Determine scroll target:
-            // - If we have 2+ past events: scroll to the 3rd event from start (index 2)
-            // - If we have 1 past event: scroll to 2nd event (index 1) so 1 past + future visible
-            // - If no past events: scroll to top (index 0)
-            // Goal: at most 2 past events visible, next upcoming at position 3
             if (firstFutureIndex > 0) {
-                // We have past events, scroll so first future is at position 3
-                // That means we want events at indices (firstFutureIndex - 2) to (firstFutureIndex + visible - 3)
                 const targetIndex = Math.max(0, firstFutureIndex - 2);
-                scrollTarget = allEvents[targetIndex];
+                scrollTarget = allEventElements[targetIndex];
             }
 
-            // Auto-scroll to position the view
             if (scrollTarget) {
-                // Scroll so the target is at the top, leaving room for header
-                const headerOffset = 140; // Account for header + day header + padding
+                const headerOffset = 140;
                 const elementPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
 
@@ -588,9 +264,11 @@
                     behavior: 'auto'
                 });
             }
-        })();
+        }
+
+        loadSchedule();
     </script>
-    
+
     <div class="footer">
         Auto-updated schedule 🦞<br>
         Send screenshots to update
