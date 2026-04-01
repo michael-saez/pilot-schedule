@@ -11,7 +11,7 @@
         {
           "type": "flight",
           "flightNumber": "UPS64",
-          "position": "AC",
+          "position": "JS",
           "route": "ANC-ICN",
           "aircraft": "747",
           "startDateUTC": "03/31/26",
@@ -60,7 +60,7 @@
         {
           "type": "flight",
           "flightNumber": "UPS0099",
-          "position": "AC",
+          "position": "JS",
           "route": "ANC-SDF",
           "aircraft": "747",
           "startDateUTC": "04/02/26",
@@ -76,7 +76,7 @@
         {
           "type": "flight",
           "flightNumber": "UPS1114",
-          "position": "AC",
+          "position": "JS",
           "route": "SDF-JFK",
           "aircraft": "747",
           "startDateUTC": "04/03/26",
