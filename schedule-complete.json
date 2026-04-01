@@ -11,7 +11,7 @@
         {
           "type": "flight",
           "flightNumber": "UPS64",
-          "position": "JS",
+          "position": "DH",
           "route": "ANC-ICN",
           "aircraft": "747",
           "startDateUTC": "03/31/26",
