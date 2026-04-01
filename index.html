@@ -292,16 +292,16 @@
                         let subtitle = `${event.flightNumber} | ${event.position}`;
                         if (event.blockHours) subtitle += ` | ${event.blockHours}`;
 
-                        // Format local dates
+                        // Format local dates with day of week
                         const startDate = parseMMDDYY(item.dateLocal);
                         const endDate = parseMMDDYY(event.endDateLT);
-                        const startDisplay = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                        const endDisplay = endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        const startDisplay = startDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const endDisplay = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                         const spansMultipleDays = item.dateLocal !== event.endDateLT;
 
-                        let localTimeDisplay = spansMultipleDays 
-                            ? `${startDisplay} ${item.timeLocal} → ${endDisplay} ${event.endTimeLT}`
-                            : `${item.timeLocal} → ${event.endTimeLT}`;
+                        let localTimeDisplay = spansMultipleDays
+                            ? `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${event.endTimeLT}`
+                            : `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${event.endTimeLT}`;
 
                         let utcTimeDisplay = item.dateUTC 
                             ? `${item.dateUTC} ${item.timeUTC}Z<br/>→ ${item.endDateUTC} ${item.endTimeUTC}Z`
@@ -333,6 +333,14 @@
                         `;
                     } else if (event.type === 'layover') {
                         const layoverCity = getCityName(event.city);
+                        const layoverStartDate = parseMMDDYY(event.startDateLT);
+                        const layoverEndDate = parseMMDDYY(event.endDateLT);
+                        const layoverStartDisplay = layoverStartDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const layoverEndDisplay = layoverEndDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const restHours = event.restHours || 'TBD';
+
+                        let layoverTimeDisplay = `${layoverStartDisplay} ${event.startTimeLT}<br/>→ ${layoverEndDisplay} ${event.endTimeLT}<br/><strong>Rest: ${restHours}</strong>`;
+
                         eventHTML = `
                             <div class="event ${pastClass}" data-date="${item.dateLocal}">
                                 <div class="event-icon layover">🛏️</div>
@@ -342,8 +350,8 @@
                                 </div>
                                 <div class="event-times">
                                     <div class="time-column">
-                                        <div class="time-label">Duration</div>
-                                        ${event.duration}
+                                        <div class="time-label">Local</div>
+                                        ${layoverTimeDisplay}
                                     </div>
                                 </div>
                             </div>
