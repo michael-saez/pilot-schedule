@@ -126,6 +126,34 @@
     <div id="schedule"></div>
 
     <script>
+        // Airport code to city name mapping
+        const airportCities = {
+            'ANC': 'Anchorage',
+            'SDF': 'Louisville',
+            'JFK': 'New York',
+            'ICN': 'Seoul',
+            'HKG': 'Hong Kong',
+            'TPE': 'Taipei',
+            'PVG': 'Shanghai',
+            'NRT': 'Tokyo',
+            'IAD': 'Washington DC',
+            'LAX': 'Los Angeles',
+            'ORD': 'Chicago',
+            'MIA': 'Miami',
+            'SFO': 'San Francisco',
+            'BOS': 'Boston',
+            'DEN': 'Denver',
+            'ATL': 'Atlanta',
+            'LAS': 'Las Vegas',
+            'SEA': 'Seattle',
+            'PDX': 'Portland',
+            'PHX': 'Phoenix'
+        };
+
+        function getCityName(code) {
+            return airportCities[code] || code;
+        }
+
         async function loadSchedule() {
             try {
                 const response = await fetch('schedule-complete.json');
@@ -241,11 +269,16 @@
                             ? `${item.dateUTC} ${item.timeUTC}Z<br/>→ ${item.endDateUTC} ${item.endTimeUTC}Z`
                             : '(pending)';
 
+                        const routeParts = event.route.split('-');
+                        const cityRoute = routeParts.length === 2
+                            ? `${getCityName(routeParts[0])} → ${getCityName(routeParts[1])}`
+                            : event.route;
+
                         eventHTML = `
                             <div class="event ${pastClass}" data-date="${item.dateLocal}">
                                 <div class="event-icon ${iconClass}">${icon}</div>
                                 <div class="event-details">
-                                    <div class="event-title">${event.route}</div>
+                                    <div class="event-title">${cityRoute}</div>
                                     <div class="event-subtitle">${subtitle}</div>
                                 </div>
                                 <div class="event-times">
