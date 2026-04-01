@@ -1,6 +1,416 @@
 {
-  "lastUpdated": "2026-04-01T13:30:00Z",
+  "lastUpdated": "2026-04-01T07:02:00Z",
   "pilot": "Michael Saez",
   "base": "ANC",
-  "trips": []
+  "trips": [
+    {
+      "tripId": "49220",
+      "startLT": "03/31/26",
+      "endLT": "04/03/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS64",
+          "position": "DH",
+          "route": "ANC-ICN",
+          "aircraft": "747",
+          "startDateUTC": "03/31/26",
+          "startTimeUTC": "17:28",
+          "endDateUTC": "04/01/26",
+          "endTimeUTC": "02:20",
+          "startDateLT": "03/31/26",
+          "startTimeLT": "09:28",
+          "endDateLT": "04/01/26",
+          "endTimeLT": "11:20",
+          "blockHours": "0:00"
+        },
+        {
+          "type": "layover",
+          "city": "ICN",
+          "hotel": "Sheraton Incheon",
+          "startDateUTC": "04/01/26",
+          "startTimeUTC": "02:20",
+          "endDateUTC": "04/02/26",
+          "endTimeUTC": "06:15",
+          "startDateLT": "04/01/26",
+          "startTimeLT": "11:20",
+          "endDateLT": "04/02/26",
+          "endTimeLT": "15:15"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS67",
+          "position": "R/O",
+          "route": "ICN-ANC",
+          "aircraft": "747",
+          "startDateUTC": "04/02/26",
+          "startTimeUTC": "07:45",
+          "endDateUTC": "04/02/26",
+          "endTimeUTC": "15:46",
+          "startDateLT": "04/02/26",
+          "startTimeLT": "16:45",
+          "endDateLT": "04/02/26",
+          "endTimeLT": "07:46",
+          "blockHours": "8:01"
+        }
+      ]
+    },
+    {
+      "tripId": "21769",
+      "startLT": "04/11/26",
+      "endLT": "04/15/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS62",
+          "position": "F/O",
+          "route": "ANC-HKG",
+          "aircraft": "747",
+          "startDateUTC": "04/11/26",
+          "startTimeUTC": "19:38",
+          "endDateUTC": "04/12/26",
+          "endTimeUTC": "06:40",
+          "startDateLT": "04/11/26",
+          "startTimeLT": "11:38",
+          "endDateLT": "04/12/26",
+          "endTimeLT": "14:40",
+          "blockHours": "11:02"
+        },
+        {
+          "type": "layover",
+          "city": "HKG",
+          "hotel": "New World Millennium",
+          "startDateUTC": "04/12/26",
+          "startTimeUTC": "06:40",
+          "endDateUTC": "04/15/26",
+          "endTimeUTC": "02:15",
+          "startDateLT": "04/12/26",
+          "startTimeLT": "14:40",
+          "endDateLT": "04/15/26",
+          "endTimeLT": "10:15"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS67",
+          "position": "F/O",
+          "route": "HKG-ANC",
+          "aircraft": "747",
+          "startDateUTC": "04/15/26",
+          "startTimeUTC": "02:15",
+          "endDateUTC": "04/15/26",
+          "endTimeUTC": "12:01",
+          "startDateLT": "04/15/26",
+          "startTimeLT": "10:15",
+          "endDateLT": "04/15/26",
+          "endTimeLT": "04:01",
+          "blockHours": "9:46"
+        }
+      ]
+    },
+    {
+      "tripId": "A70674",
+      "startLT": "04/17/26",
+      "endLT": "04/23/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS62",
+          "position": "F/O",
+          "route": "ANC-HKG",
+          "aircraft": "747",
+          "startDateUTC": "04/17/26",
+          "startTimeUTC": "17:53",
+          "endDateUTC": "04/18/26",
+          "endTimeUTC": "04:55",
+          "startDateLT": "04/17/26",
+          "startTimeLT": "09:53",
+          "endDateLT": "04/18/26",
+          "endTimeLT": "12:55",
+          "blockHours": "11:02"
+        },
+        {
+          "type": "layover",
+          "city": "HKG",
+          "hotel": "New World Millennium",
+          "startDateUTC": "04/18/26",
+          "startTimeUTC": "04:55",
+          "endDateUTC": "04/20/26",
+          "endTimeUTC": "07:05",
+          "startDateLT": "04/18/26",
+          "startTimeLT": "12:55",
+          "endDateLT": "04/20/26",
+          "endTimeLT": "15:05"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS61",
+          "position": "DH",
+          "route": "HKG-TPE",
+          "aircraft": "747",
+          "startDateUTC": "04/20/26",
+          "startTimeUTC": "08:05",
+          "endDateUTC": "04/20/26",
+          "endTimeUTC": "09:50",
+          "startDateLT": "04/20/26",
+          "startTimeLT": "16:05",
+          "endDateLT": "04/20/26",
+          "endTimeLT": "17:50",
+          "blockHours": "0:00"
+        },
+        {
+          "type": "layover",
+          "city": "TPE",
+          "hotel": "Sheraton Taipei",
+          "startDateUTC": "04/20/26",
+          "startTimeUTC": "09:50",
+          "endDateUTC": "04/22/26",
+          "endTimeUTC": "10:40",
+          "startDateLT": "04/20/26",
+          "startTimeLT": "17:50",
+          "endDateLT": "04/22/26",
+          "endTimeLT": "18:40"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS61",
+          "position": "F/O",
+          "route": "TPE-ANC",
+          "aircraft": "747",
+          "startDateUTC": "04/22/26",
+          "startTimeUTC": "12:10",
+          "endDateUTC": "04/23/26",
+          "endTimeUTC": "21:02",
+          "startDateLT": "04/22/26",
+          "startTimeLT": "20:10",
+          "endDateLT": "04/23/26",
+          "endTimeLT": "13:02",
+          "blockHours": "8:52"
+        }
+      ]
+    },
+    {
+      "tripId": "A70621",
+      "startLT": "04/28/26",
+      "endLT": "05/03/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS109",
+          "position": "F/O",
+          "route": "ANC-SDF",
+          "aircraft": "747",
+          "startDateUTC": "04/28/26",
+          "startTimeUTC": "22:28",
+          "endDateUTC": "04/29/26",
+          "endTimeUTC": "04:35",
+          "startDateLT": "04/28/26",
+          "startTimeLT": "14:28",
+          "endDateLT": "04/29/26",
+          "endTimeLT": "00:35",
+          "blockHours": "6:07"
+        },
+        {
+          "type": "layover",
+          "city": "SDF",
+          "hotel": "Galt House",
+          "startDateUTC": "04/29/26",
+          "startTimeUTC": "04:35",
+          "endDateUTC": "04/30/26",
+          "endTimeUTC": "09:05",
+          "startDateLT": "04/29/26",
+          "startTimeLT": "00:35",
+          "endDateLT": "04/30/26",
+          "endTimeLT": "05:05"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS108",
+          "position": "F/O",
+          "route": "SDF-NRT",
+          "aircraft": "747",
+          "startDateUTC": "04/30/26",
+          "startTimeUTC": "09:05",
+          "endDateUTC": "04/30/26",
+          "endTimeUTC": "22:30",
+          "startDateLT": "04/30/26",
+          "startTimeLT": "05:05",
+          "endDateLT": "04/30/26",
+          "endTimeLT": "07:30",
+          "blockHours": "13:25"
+        },
+        {
+          "type": "layover",
+          "city": "NRT",
+          "hotel": "Hilton Narita UPS Only",
+          "startDateUTC": "04/30/26",
+          "startTimeUTC": "22:30",
+          "endDateUTC": "05/02/26",
+          "endTimeUTC": "12:55",
+          "startDateLT": "05/01/26",
+          "startTimeLT": "07:30",
+          "endDateLT": "05/02/26",
+          "endTimeLT": "21:55"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS109",
+          "position": "DH",
+          "route": "NRT-ANC",
+          "aircraft": "747",
+          "startDateUTC": "05/02/26",
+          "startTimeUTC": "12:55",
+          "endDateUTC": "05/02/26",
+          "endTimeUTC": "19:32",
+          "startDateLT": "05/02/26",
+          "startTimeLT": "21:55",
+          "endDateLT": "05/02/26",
+          "endTimeLT": "11:32",
+          "blockHours": "0:00"
+        }
+      ]
+    },
+    {
+      "tripId": "A70539",
+      "startLT": "05/09/26",
+      "endLT": "05/13/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS80",
+          "position": "F/O",
+          "route": "ANC-PVG",
+          "aircraft": "747",
+          "startDateUTC": "05/09/26",
+          "startTimeUTC": "18:45",
+          "endDateUTC": "05/10/26",
+          "endTimeUTC": "04:10",
+          "startDateLT": "05/09/26",
+          "startTimeLT": "10:45",
+          "endDateLT": "05/10/26",
+          "endTimeLT": "12:10",
+          "blockHours": "9:25"
+        },
+        {
+          "type": "layover",
+          "city": "PVG",
+          "hotel": "Conrad Shanghai",
+          "startDateUTC": "05/10/26",
+          "startTimeUTC": "04:10",
+          "endDateUTC": "05/12/26",
+          "endTimeUTC": "11:35",
+          "startDateLT": "05/10/26",
+          "startTimeLT": "12:10",
+          "endDateLT": "05/12/26",
+          "endTimeLT": "19:35"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS81",
+          "position": "F/O",
+          "route": "PVG-ANC",
+          "aircraft": "747",
+          "startDateUTC": "05/12/26",
+          "startTimeUTC": "13:05",
+          "endDateUTC": "05/12/26",
+          "endTimeUTC": "21:49",
+          "startDateLT": "05/12/26",
+          "startTimeLT": "21:05",
+          "endDateLT": "05/12/26",
+          "endTimeLT": "13:49",
+          "blockHours": "8:44"
+        }
+      ]
+    },
+    {
+      "tripId": "A70556",
+      "startLT": "05/15/26",
+      "endLT": "05/19/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS64",
+          "position": "F/O",
+          "route": "ANC-HKG",
+          "aircraft": "747",
+          "startDateUTC": "05/15/26",
+          "startTimeUTC": "17:53",
+          "endDateUTC": "05/16/26",
+          "endTimeUTC": "06:25",
+          "startDateLT": "05/15/26",
+          "startTimeLT": "09:53",
+          "endDateLT": "05/16/26",
+          "endTimeLT": "14:25",
+          "blockHours": "11:02"
+        },
+        {
+          "type": "layover",
+          "city": "HKG",
+          "hotel": "New World Millennium",
+          "startDateUTC": "05/16/26",
+          "startTimeUTC": "06:25",
+          "endDateUTC": "05/18/26",
+          "endTimeUTC": "10:15",
+          "startDateLT": "05/16/26",
+          "startTimeLT": "14:25",
+          "endDateLT": "05/18/26",
+          "endTimeLT": "18:15"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS59",
+          "position": "F/O",
+          "route": "HKG-ANC",
+          "aircraft": "747",
+          "startDateUTC": "05/18/26",
+          "startTimeUTC": "11:45",
+          "endDateUTC": "05/18/26",
+          "endTimeUTC": "21:36",
+          "startDateLT": "05/18/26",
+          "startTimeLT": "19:45",
+          "endDateLT": "05/18/26",
+          "endTimeLT": "13:36",
+          "blockHours": "9:51"
+        }
+      ]
+    },
+    {
+      "tripId": "Jumpseats",
+      "startLT": "04/02/26",
+      "endLT": "04/03/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS0099",
+          "position": "JS",
+          "route": "ANC-SDF",
+          "aircraft": "757",
+          "startDateUTC": "04/02/26",
+          "startTimeUTC": "22:46",
+          "endDateUTC": "04/03/26",
+          "endTimeUTC": "04:53",
+          "startDateLT": "04/02/26",
+          "startTimeLT": "14:46",
+          "endDateLT": "04/03/26",
+          "endTimeLT": "00:53",
+          "blockHours": "6:07"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS1114",
+          "position": "JS",
+          "route": "SDF-JFK",
+          "aircraft": "757",
+          "startDateUTC": "04/03/26",
+          "startTimeUTC": "07:28",
+          "endDateUTC": "04/03/26",
+          "endTimeUTC": "09:15",
+          "startDateLT": "04/03/26",
+          "startTimeLT": "03:28",
+          "endDateLT": "04/03/26",
+          "endTimeLT": "05:15",
+          "blockHours": "1:47"
+        }
+      ]
+    }
+  ]
 }
