@@ -114,6 +114,15 @@
         .footer { text-align: center; padding: 30px 20px; font-size: 12px; color: #64748b; }
         .loading { text-align: center; padding: 40px 20px; }
         .error { text-align: center; padding: 40px 20px; color: #ef4444; }
+        .validation-warning {
+            background: #fef3c7;
+            border-bottom: 2px solid #f59e0b;
+            padding: 12px 20px;
+            color: #92400e;
+            font-size: 13px;
+            text-align: center;
+        }
+        .validation-warning strong { font-weight: 600; }
     </style>
 </head>
 <body>
@@ -176,6 +185,20 @@
             return new Date(year, month, day);
         }
 
+        function validateChronology(allEvents) {
+            const issues = [];
+            for (let i = 1; i < allEvents.length; i++) {
+                const prevUtc = allEvents[i-1].dateUTC + 'T' + allEvents[i-1].timeUTC;
+                const currUtc = allEvents[i].dateUTC + 'T' + allEvents[i].timeUTC;
+                if (currUtc < prevUtc) {
+                    const prevFlight = allEvents[i-1].event.flightNumber || 'Layover';
+                    const currFlight = allEvents[i].event.flightNumber || 'Layover';
+                    issues.push(`${currFlight} at ${currUtc} is before ${prevFlight} at ${prevUtc}`);
+                }
+            }
+            return issues;
+        }
+
         function renderSchedule(data) {
             const scheduleDiv = document.getElementById('schedule');
             const lastUpdatedDiv = document.getElementById('lastUpdated');
@@ -211,6 +234,16 @@
                 const bUtc = b.dateUTC + 'T' + b.timeUTC;
                 return aUtc.localeCompare(bUtc);
             });
+
+            // Validate chronological order
+            const chronoIssues = validateChronology(allEvents);
+            if (chronoIssues.length > 0) {
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'validation-warning';
+                warningDiv.innerHTML = `<strong>⚠️ Schedule Chronology Issue:</strong> ${chronoIssues[0]}`;
+                document.body.insertBefore(warningDiv, document.body.firstChild);
+                console.error('Chronology validation failed:', chronoIssues);
+            }
 
             // Group by LOCAL date for display
             const eventsByDate = {};
