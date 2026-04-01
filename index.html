@@ -294,11 +294,12 @@
                             </div>
                         `;
                     } else if (event.type === 'layover') {
+                        const layoverCity = getCityName(event.city);
                         eventHTML = `
                             <div class="event ${pastClass}" data-date="${item.dateLocal}">
                                 <div class="event-icon layover">🛏️</div>
                                 <div class="event-details">
-                                    <div class="event-title">Layover at ${event.city}</div>
+                                    <div class="event-title">Layover in ${layoverCity}</div>
                                     <div class="event-subtitle">${event.hotel}</div>
                                 </div>
                                 <div class="event-times">
