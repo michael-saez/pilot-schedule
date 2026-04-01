@@ -202,14 +202,26 @@
 
                 eventsByDate[dateStr].forEach(item => {
                     const event = item.event;
-                    const isPast = dateStr < today;
+                    // Convert dateStr (MM/DD/YY) to YYYY-MM-DD for comparison
+                    const dateObj = parseMMDDYY(dateStr);
+                    const dateComparable = dateObj.getFullYear() + '-' +
+                                         String(dateObj.getMonth() + 1).padStart(2, '0') + '-' +
+                                         String(dateObj.getDate()).padStart(2, '0');
+                    const isPast = dateComparable < today;
                     const pastClass = isPast ? 'past' : '';
                     let eventHTML = '';
 
                     if (event.type === 'flight') {
                         let icon = '✈️';
-                        if (event.position === 'DH') icon = '😴';
-                        if (event.position === 'JS') icon = '🪑';
+                        let iconClass = 'flight';
+                        if (event.position === 'DH') {
+                            icon = '😴';
+                            iconClass = 'deadhead';
+                        }
+                        if (event.position === 'AC') {
+                            icon = '🪑';
+                            iconClass = 'jumpseat';
+                        }
 
                         let subtitle = `${event.flightNumber} | ${event.position}`;
                         if (event.blockHours) subtitle += ` | ${event.blockHours}`;
@@ -231,7 +243,7 @@
 
                         eventHTML = `
                             <div class="event ${pastClass}" data-date="${item.dateLocal}">
-                                <div class="event-icon flight">${icon}</div>
+                                <div class="event-icon ${iconClass}">${icon}</div>
                                 <div class="event-details">
                                     <div class="event-title">${event.route}</div>
                                     <div class="event-subtitle">${subtitle}</div>
