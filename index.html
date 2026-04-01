@@ -189,16 +189,16 @@
 
         function validateChronology(allEvents) {
             const issues = [];
-            // Only validate flights with UTC times (skip layovers which don't have UTC)
-            const flightsWithUTC = allEvents.filter(e => e.dateUTC && e.timeUTC);
+            // Validate all events with UTC times (flights and layovers)
+            const eventsWithUTC = allEvents.filter(e => e.dateUTC && e.timeUTC);
 
-            for (let i = 1; i < flightsWithUTC.length; i++) {
-                const prevUtc = flightsWithUTC[i-1].dateUTC + 'T' + flightsWithUTC[i-1].timeUTC;
-                const currUtc = flightsWithUTC[i].dateUTC + 'T' + flightsWithUTC[i].timeUTC;
+            for (let i = 1; i < eventsWithUTC.length; i++) {
+                const prevUtc = eventsWithUTC[i-1].dateUTC + 'T' + eventsWithUTC[i-1].timeUTC;
+                const currUtc = eventsWithUTC[i].dateUTC + 'T' + eventsWithUTC[i].timeUTC;
                 if (currUtc < prevUtc) {
-                    const prevFlight = flightsWithUTC[i-1].event.flightNumber || 'Unknown';
-                    const currFlight = flightsWithUTC[i].event.flightNumber || 'Unknown';
-                    issues.push(`${currFlight} (${currUtc}Z) is before ${prevFlight} (${prevUtc}Z)`);
+                    const prevName = eventsWithUTC[i-1].event.flightNumber || eventsWithUTC[i-1].event.city || 'Event';
+                    const currName = eventsWithUTC[i].event.flightNumber || eventsWithUTC[i].event.city || 'Event';
+                    issues.push(`${currName} (${currUtc}Z) is before ${prevName} (${prevUtc}Z)`);
                 }
             }
             return issues;
