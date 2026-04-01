@@ -246,7 +246,7 @@
                 const warningDiv = document.createElement('div');
                 warningDiv.className = 'validation-warning';
                 warningDiv.innerHTML = `<strong>⚠️ Schedule Chronology Issue:</strong> ${chronoIssues[0]}`;
-                document.body.insertBefore(warningDiv, document.body.firstChild);
+                scheduleDiv.insertBefore(warningDiv, scheduleDiv.firstChild);
                 console.error('Chronology validation failed:', chronoIssues);
             }
 
