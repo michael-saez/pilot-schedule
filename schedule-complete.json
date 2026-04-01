@@ -35,7 +35,8 @@
           "startDateLT": "04/01/26",
           "startTimeLT": "11:20",
           "endDateLT": "04/02/26",
-          "endTimeLT": "15:15"
+          "endTimeLT": "15:15",
+          "restHours": "27:25"
         },
         {
           "type": "flight",
@@ -87,7 +88,8 @@
           "startDateLT": "04/12/26",
           "startTimeLT": "14:40",
           "endDateLT": "04/15/26",
-          "endTimeLT": "10:15"
+          "endTimeLT": "10:15",
+          "restHours": "65:35"
         },
         {
           "type": "flight",
@@ -139,7 +141,8 @@
           "startDateLT": "04/18/26",
           "startTimeLT": "12:55",
           "endDateLT": "04/20/26",
-          "endTimeLT": "15:05"
+          "endTimeLT": "15:05",
+          "restHours": "49:40"
         },
         {
           "type": "flight",
@@ -168,7 +171,8 @@
           "startDateLT": "04/20/26",
           "startTimeLT": "17:50",
           "endDateLT": "04/22/26",
-          "endTimeLT": "18:40"
+          "endTimeLT": "18:40",
+          "restHours": "48:20"
         },
         {
           "type": "flight",
@@ -220,7 +224,8 @@
           "startDateLT": "04/29/26",
           "startTimeLT": "00:35",
           "endDateLT": "04/30/26",
-          "endTimeLT": "05:05"
+          "endTimeLT": "05:05",
+          "restHours": "26:30"
         },
         {
           "type": "flight",
@@ -249,7 +254,8 @@
           "startDateLT": "05/01/26",
           "startTimeLT": "07:30",
           "endDateLT": "05/02/26",
-          "endTimeLT": "21:55"
+          "endTimeLT": "21:55",
+          "restHours": "36:25"
         },
         {
           "type": "flight",
@@ -301,7 +307,8 @@
           "startDateLT": "05/10/26",
           "startTimeLT": "12:10",
           "endDateLT": "05/12/26",
-          "endTimeLT": "19:35"
+          "endTimeLT": "19:35",
+          "restHours": "54:55"
         },
         {
           "type": "flight",
@@ -353,7 +360,8 @@
           "startDateLT": "05/16/26",
           "startTimeLT": "14:25",
           "endDateLT": "05/18/26",
-          "endTimeLT": "18:15"
+          "endTimeLT": "18:15",
+          "restHours": "51:20"
         },
         {
           "type": "flight",
