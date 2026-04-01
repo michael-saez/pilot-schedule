@@ -117,10 +117,12 @@
         .validation-warning {
             background: #fef3c7;
             border-bottom: 2px solid #f59e0b;
-            padding: 12px 20px;
+            padding: 14px 20px;
             color: #92400e;
             font-size: 13px;
             text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .validation-warning strong { font-weight: 600; }
     </style>
@@ -187,13 +189,16 @@
 
         function validateChronology(allEvents) {
             const issues = [];
-            for (let i = 1; i < allEvents.length; i++) {
-                const prevUtc = allEvents[i-1].dateUTC + 'T' + allEvents[i-1].timeUTC;
-                const currUtc = allEvents[i].dateUTC + 'T' + allEvents[i].timeUTC;
+            // Only validate flights with UTC times (skip layovers which don't have UTC)
+            const flightsWithUTC = allEvents.filter(e => e.dateUTC && e.timeUTC);
+
+            for (let i = 1; i < flightsWithUTC.length; i++) {
+                const prevUtc = flightsWithUTC[i-1].dateUTC + 'T' + flightsWithUTC[i-1].timeUTC;
+                const currUtc = flightsWithUTC[i].dateUTC + 'T' + flightsWithUTC[i].timeUTC;
                 if (currUtc < prevUtc) {
-                    const prevFlight = allEvents[i-1].event.flightNumber || 'Layover';
-                    const currFlight = allEvents[i].event.flightNumber || 'Layover';
-                    issues.push(`${currFlight} at ${currUtc} is before ${prevFlight} at ${prevUtc}`);
+                    const prevFlight = flightsWithUTC[i-1].event.flightNumber || 'Unknown';
+                    const currFlight = flightsWithUTC[i].event.flightNumber || 'Unknown';
+                    issues.push(`${currFlight} (${currUtc}Z) is before ${prevFlight} (${prevUtc}Z)`);
                 }
             }
             return issues;
