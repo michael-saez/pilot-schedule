@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1c1c1e">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Michael's Schedule</title>
+    <script>
+        if (window.navigator.standalone) {
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) window.location.reload();
+            });
+        }
+        setInterval(function() {
+            if (!document.hidden) window.location.reload(true);
+        }, 300000);
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+        .header {
+            background: #1e293b;
+            padding: 20px;
+            padding-top: 50px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+        .header h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+        .header .subtitle { font-size: 13px; color: #94a3b8; }
+        .last-updated { text-align: center; padding: 10px; font-size: 11px; color: #64748b; }
+        .day-header {
+            background: #0f172a;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #60a5fa;
+            border-bottom: 1px solid #1e293b;
+        }
+        .event {
+            background: #1e293b;
+            display: grid;
+            grid-template-columns: 36px 1fr auto;
+            gap: 14px;
+            align-items: center;
+            padding: 14px 20px;
+            border-bottom: 1px solid #334155;
+        }
+        .event-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            background: transparent;
+            border: 2px solid #64748b;
+            color: #94a3b8;
+        }
+        .event-icon.flight { border-color: #3b82f6; color: #3b82f6; }
+        .event-icon.layover { border-color: #8b5cf6; color: #8b5cf6; }
+        .event-icon.jumpseat { border-color: #f59e0b; color: #f59e0b; }
+        .event-icon.deadhead { border-color: #475569; color: #64748b; }
+        .event-details { }
+        .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
+        .event-subtitle { font-size: 13px; color: #94a3b8; }
+        .event-times {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 20px;
+            text-align: right;
+            font-size: 13px;
+        }
+        .time-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .time-column.utc {
+            border-left: 1px solid #334155;
+            padding-left: 20px;
+            color: #60a5fa;
+            font-weight: 500;
+        }
+        .time-label {
+            font-size: 10px;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .event.past {
+            opacity: 0.45;
+            filter: grayscale(0.6);
+        }
+        .event.past .event-title {
+            color: #64748b;
+        }
+        .event.past .event-subtitle {
+            color: #475569;
+        }
+        .event.past .event-icon {
+            border-color: #475569;
+            color: #64748b;
+        }
+        .footer { text-align: center; padding: 30px 20px; font-size: 12px; color: #64748b; }
+        .loading { text-align: center; padding: 40px 20px; }
+        .error { text-align: center; padding: 40px 20px; color: #ef4444; }
+        .validation-warning {
+            background: #fef3c7;
+            border-bottom: 2px solid #f59e0b;
+            padding: 14px 20px;
+            color: #92400e;
+            font-size: 13px;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .validation-warning strong { font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Michael's Schedule</h1>
+        <div class="subtitle">Cargo Pilot | ANC Base</div>
+    </div>
+
+    <div class="last-updated" id="lastUpdated">Loading...</div>
+    <div id="schedule"></div>
+
+    <script>
+        // Airport code to city name mapping
+        const airportCities = {
+            'ANC': 'Anchorage',
+            'SDF': 'Louisville',
+            'JFK': 'New York',
+            'ICN': 'Seoul',
+            'HKG': 'Hong Kong',
+            'TPE': 'Taipei',
+            'PVG': 'Shanghai',
+            'NRT': 'Tokyo',
+            'IAD': 'Washington DC',
+            'LAX': 'Los Angeles',
+            'ORD': 'Chicago',
+            'MIA': 'Miami',
+            'SFO': 'San Francisco',
+            'BOS': 'Boston',
+            'DEN': 'Denver',
+            'ATL': 'Atlanta',
+            'LAS': 'Las Vegas',
+            'SEA': 'Seattle',
+            'PDX': 'Portland',
+            'PHX': 'Phoenix',
+            'CGN': 'Cologne'
+        };
+
+        function getCityName(code) {
+            return airportCities[code] || code;
+        }
+
+        async function loadSchedule() {
+            try {
+                const response = await fetch('schedule-complete.json');
+                if (!response.ok) throw new Error('Failed to load schedule');
+                const data = await response.json();
+                renderSchedule(data);
+            } catch (error) {
+                console.error('Error loading schedule:', error);
+                document.getElementById('schedule').innerHTML =
+                    '<div class="error">Error loading schedule. Please refresh the page.</div>';
+            }
+        }
+
+        function parseMMDDYY(dateStr) {
+            // Parse dates like "03/31/26" into Date objects
+            const parts = dateStr.split('/');
+            const month = parseInt(parts[0], 10) - 1; // JS months are 0-indexed
+            const day = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10) + 2000; // "26" becomes 2026
+            return new Date(year, month, day);
+        }
+
+        function validateChronology(allEvents) {
+            const issues = [];
+            // Validate all events with UTC times (flights and layovers)
+            const eventsWithUTC = allEvents.filter(e => e.dateUTC && e.timeUTC);
+
+            for (let i = 1; i < eventsWithUTC.length; i++) {
+                const prevUtc = eventsWithUTC[i-1].dateUTC + 'T' + eventsWithUTC[i-1].timeUTC;
+                const currUtc = eventsWithUTC[i].dateUTC + 'T' + eventsWithUTC[i].timeUTC;
+                if (currUtc < prevUtc) {
+                    const prevName = eventsWithUTC[i-1].event.flightNumber || eventsWithUTC[i-1].event.city || 'Event';
+                    const currName = eventsWithUTC[i].event.flightNumber || eventsWithUTC[i].event.city || 'Event';
+                    issues.push(`${currName} (${currUtc}Z) is before ${prevName} (${prevUtc}Z)`);
+                }
+            }
+            return issues;
+        }
+
+        function renderSchedule(data) {
+            const scheduleDiv = document.getElementById('schedule');
+            const lastUpdatedDiv = document.getElementById('lastUpdated');
+            const lastUpdated = new Date().toISOString().split('T')[0];
+            lastUpdatedDiv.textContent = `Updated ${lastUpdated}`;
+
+            const now = new Date();
+            const today = now.getFullYear() + '-' +
+                         String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                         String(now.getDate()).padStart(2, '0');
+
+            // Collect all events
+            const allEvents = [];
+            data.trips.forEach(trip => {
+                trip.events.forEach(event => {
+                    allEvents.push({
+                        dateLocal: event.startDateLT,
+                        timeLocal: event.startTimeLT,
+                        dateUTC: event.startDateUTC || '',
+                        timeUTC: event.startTimeUTC || '',
+                        endDateUTC: event.endDateUTC || '',
+                        endTimeUTC: event.endTimeUTC || '',
+                        event: event,
+                        trip: trip
+                    });
+                });
+            });
+
+            // Sort by UTC times (source of truth)
+            allEvents.sort((a, b) => {
+                if (!a.dateUTC || !b.dateUTC) return 0;
+                const aUtc = a.dateUTC + 'T' + a.timeUTC;
+                const bUtc = b.dateUTC + 'T' + b.timeUTC;
+                return aUtc.localeCompare(bUtc);
+            });
+
+            // Validate chronological order
+            const chronoIssues = validateChronology(allEvents);
+            if (chronoIssues.length > 0) {
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'validation-warning';
+                warningDiv.innerHTML = `<strong>⚠️ Schedule Chronology Issue:</strong> ${chronoIssues[0]}`;
+                scheduleDiv.insertBefore(warningDiv, scheduleDiv.firstChild);
+                console.error('Chronology validation failed:', chronoIssues);
+            }
+
+            // Group by LOCAL date for display
+            const eventsByDate = {};
+            allEvents.forEach(item => {
+                const date = item.dateLocal;
+                if (!eventsByDate[date]) eventsByDate[date] = [];
+                eventsByDate[date].push(item);
+            });
+
+            // Render
+            Object.keys(eventsByDate).sort().forEach(dateStr => {
+                const date = parseMMDDYY(dateStr);
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                const year = date.getFullYear();
+                scheduleDiv.innerHTML += `<div class="day-header">${dayName} ${monthDay} ${year}</div>`;
+
+                eventsByDate[dateStr].forEach(item => {
+                    const event = item.event;
+                    // Convert dateStr (MM/DD/YY) to YYYY-MM-DD for comparison
+                    const dateObj = parseMMDDYY(dateStr);
+                    const dateComparable = dateObj.getFullYear() + '-' +
+                                         String(dateObj.getMonth() + 1).padStart(2, '0') + '-' +
+                                         String(dateObj.getDate()).padStart(2, '0');
+                    const isPast = dateComparable < today;
+                    const pastClass = isPast ? 'past' : '';
+                    let eventHTML = '';
+
+                    if (event.type === 'flight') {
+                        let icon = '✈️';
+                        let iconClass = 'flight';
+                        if (event.position === 'DH') {
+                            icon = '😴';
+                            iconClass = 'deadhead';
+                        }
+                        if (event.position === 'JS') {
+                            icon = '🪑';
+                            iconClass = 'jumpseat';
+                        }
+
+                        let subtitle = `${event.flightNumber} | ${event.position}`;
+                        if (event.blockHours) subtitle += ` | ${event.blockHours}`;
+
+                        // Format local dates with day of week
+                        const startDate = parseMMDDYY(item.dateLocal);
+                        const endDate = parseMMDDYY(event.endDateLT);
+                        const startDisplay = startDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const endDisplay = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const spansMultipleDays = item.dateLocal !== event.endDateLT;
+
+                        let localTimeDisplay = spansMultipleDays
+                            ? `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${event.endTimeLT}`
+                            : `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${event.endTimeLT}`;
+
+                        let utcTimeDisplay = item.dateUTC 
+                            ? `${item.dateUTC} ${item.timeUTC}Z<br/>→ ${item.endDateUTC} ${item.endTimeUTC}Z`
+                            : '(pending)';
+
+                        const routeParts = event.route.split('-');
+                        const cityRoute = routeParts.length === 2
+                            ? `${getCityName(routeParts[0])} → ${getCityName(routeParts[1])}`
+                            : event.route;
+
+                        eventHTML = `
+                            <div class="event ${pastClass}" data-date="${item.dateLocal}">
+                                <div class="event-icon ${iconClass}">${icon}</div>
+                                <div class="event-details">
+                                    <div class="event-title">${cityRoute}</div>
+                                    <div class="event-subtitle">${subtitle}</div>
+                                </div>
+                                <div class="event-times">
+                                    <div class="time-column">
+                                        <div class="time-label">Local</div>
+                                        ${localTimeDisplay}
+                                    </div>
+                                    <div class="time-column utc">
+                                        <div class="time-label">UTC</div>
+                                        ${utcTimeDisplay}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else if (event.type === 'layover') {
+                        const layoverCity = getCityName(event.city);
+                        const layoverStartDate = parseMMDDYY(event.startDateLT);
+                        const layoverEndDate = parseMMDDYY(event.endDateLT);
+                        const layoverStartDisplay = layoverStartDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const layoverEndDisplay = layoverEndDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        const restHours = event.restHours || 'TBD';
+
+                        let layoverTimeDisplay = `${layoverStartDisplay} ${event.startTimeLT}<br/>→ ${layoverEndDisplay} ${event.endTimeLT}<br/><strong>Rest: ${restHours}</strong>`;
+
+                        eventHTML = `
+                            <div class="event ${pastClass}" data-date="${item.dateLocal}">
+                                <div class="event-icon layover">🛏️</div>
+                                <div class="event-details">
+                                    <div class="event-title">Layover in ${layoverCity}</div>
+                                    <div class="event-subtitle">${event.hotel}</div>
+                                </div>
+                                <div class="event-times">
+                                    <div class="time-column">
+                                        <div class="time-label">Local</div>
+                                        ${layoverTimeDisplay}
+                                    </div>
+                                    <div class="time-column utc">
+                                        <div class="time-label">UTC</div>
+                                        ${event.startDateUTC} ${event.startTimeUTC}Z<br/>→ ${event.endDateUTC} ${event.endTimeUTC}Z
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    scheduleDiv.innerHTML += eventHTML;
+                });
+            });
+        }
+
+        loadSchedule();
+    </script>
+
+    <div class="footer">
+        Auto-updated schedule 🤖<br/>Powered by Claude
+    </div>
+</body>
+</html>
