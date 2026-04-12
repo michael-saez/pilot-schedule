@@ -270,8 +270,18 @@
                     // Check if event is currently in progress (start <= now <= end)
                     let isCurrent = false;
                     if (item.dateUTC && item.timeUTC && event.endDateUTC && event.endTimeUTC) {
-                        const eventStart = item.dateUTC + 'T' + item.timeUTC;
-                        const eventEnd = event.endDateUTC + 'T' + event.endTimeUTC;
+                        // Convert MM/DD/YY dates to YYYY-MM-DD for proper comparison
+                        const startDateObj = parseMMDDYY(item.dateUTC);
+                        const endDateObj = parseMMDDYY(event.endDateUTC);
+                        const startDateISO = startDateObj.getFullYear() + '-' +
+                                           String(startDateObj.getMonth() + 1).padStart(2, '0') + '-' +
+                                           String(startDateObj.getDate()).padStart(2, '0');
+                        const endDateISO = endDateObj.getFullYear() + '-' +
+                                         String(endDateObj.getMonth() + 1).padStart(2, '0') + '-' +
+                                         String(endDateObj.getDate()).padStart(2, '0');
+
+                        const eventStart = startDateISO + 'T' + item.timeUTC;
+                        const eventEnd = endDateISO + 'T' + event.endTimeUTC;
                         const nowUTC = now.toISOString().split('T')[0] + 'T' +
                                       String(now.getUTCHours()).padStart(2, '0') + ':' +
                                       String(now.getUTCMinutes()).padStart(2, '0');
