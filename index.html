@@ -358,6 +358,44 @@
                     scheduleDiv.innerHTML += eventHTML;
                 });
             });
+
+            // Auto-scroll to next upcoming event
+            scrollToNextEvent();
+        }
+
+        function scrollToNextEvent() {
+            const now = new Date();
+            const currentUTC = now.getFullYear() + '-' +
+                             String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                             String(now.getDate()).padStart(2, '0') + 'T' +
+                             String(now.getHours()).padStart(2, '0') + ':' +
+                             String(now.getMinutes()).padStart(2, '0');
+
+            // Find first future event
+            const events = document.querySelectorAll('[data-date]');
+            let nextEventElement = null;
+
+            for (let event of events) {
+                const eventDateStr = event.getAttribute('data-date');
+                const eventDate = parseMMDDYY(eventDateStr);
+
+                // If event date is today or in future, this is our next event
+                if (eventDate >= new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
+                    nextEventElement = event;
+                    break;
+                }
+            }
+
+            // Scroll to next event if found
+            if (nextEventElement) {
+                // Highlight the next event
+                nextEventElement.style.backgroundColor = '#1e293b';
+                nextEventElement.style.borderLeft = '4px solid #60a5fa';
+                nextEventElement.style.paddingLeft = '16px';
+
+                // Scroll into view
+                nextEventElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         // Load airports database, then load schedule
