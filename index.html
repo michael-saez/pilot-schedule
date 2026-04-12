@@ -138,32 +138,23 @@
     <div id="schedule"></div>
 
     <script>
-        // Airport code to city name mapping
-        const airportCities = {
-            'ANC': 'Anchorage',
-            'SDF': 'Louisville',
-            'JFK': 'New York',
-            'ICN': 'Seoul',
-            'HKG': 'Hong Kong',
-            'TPE': 'Taipei',
-            'PVG': 'Shanghai',
-            'NRT': 'Tokyo',
-            'IAD': 'Washington DC',
-            'LAX': 'Los Angeles',
-            'ORD': 'Chicago',
-            'MIA': 'Miami',
-            'SFO': 'San Francisco',
-            'BOS': 'Boston',
-            'DEN': 'Denver',
-            'ATL': 'Atlanta',
-            'LAS': 'Las Vegas',
-            'SEA': 'Seattle',
-            'PDX': 'Portland',
-            'PHX': 'Phoenix',
-            'CGN': 'Cologne'
-        };
+        // Comprehensive airport database (loaded at runtime)
+        let airportCities = {};
+
+        // Load airport database
+        async function loadAirportDatabase() {
+            try {
+                const response = await fetch('airports.json');
+                if (response.ok) {
+                    airportCities = await response.json();
+                }
+            } catch (error) {
+                console.warn('Could not load airport database:', error);
+            }
+        }
 
         function getCityName(code) {
+            // Use the comprehensive database, fallback to code if not found
             return airportCities[code] || code;
         }
 
@@ -369,7 +360,8 @@
             });
         }
 
-        loadSchedule();
+        // Load airports database, then load schedule
+        loadAirportDatabase().then(() => loadSchedule());
     </script>
 
     <div class="footer">
