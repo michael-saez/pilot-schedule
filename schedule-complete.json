@@ -414,7 +414,7 @@
     {
       "tripId": "Jumpseats",
       "startLT": "04/02/26",
-      "endLT": "04/03/26",
+      "endLT": "04/11/26",
       "events": [
         {
           "type": "flight",
@@ -447,6 +447,38 @@
           "endDateLT": "04/03/26",
           "endTimeLT": "05:15",
           "blockHours": "1:47"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "1123",
+          "position": "JS",
+          "route": "ALB-SDF",
+          "aircraft": "757",
+          "startDateUTC": "04/11/26",
+          "startTimeUTC": "00:58",
+          "endDateUTC": "04/11/26",
+          "endTimeUTC": "02:01",
+          "startDateLT": "04/10/26",
+          "startTimeLT": "20:58",
+          "endDateLT": "04/10/26",
+          "endTimeLT": "22:01",
+          "blockHours": "2:01"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "104",
+          "position": "JS",
+          "route": "SDF-ANC",
+          "aircraft": "767",
+          "startDateUTC": "04/11/26",
+          "startTimeUTC": "08:46",
+          "endDateUTC": "04/11/26",
+          "endTimeUTC": "15:34",
+          "startDateLT": "04/11/26",
+          "startTimeLT": "04:46",
+          "endDateLT": "04/11/26",
+          "endTimeLT": "07:34",
+          "blockHours": "6:48"
         }
       ]
     }
