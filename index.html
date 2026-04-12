@@ -266,7 +266,20 @@
                     const dateComparable = dateObj.getFullYear() + '-' +
                                          String(dateObj.getMonth() + 1).padStart(2, '0') + '-' +
                                          String(dateObj.getDate()).padStart(2, '0');
-                    const isPast = dateComparable < today;
+
+                    // Check if event is currently in progress (start <= now <= end)
+                    let isCurrent = false;
+                    if (item.dateUTC && item.timeUTC && event.endDateUTC && event.endTimeUTC) {
+                        const eventStart = item.dateUTC + 'T' + item.timeUTC;
+                        const eventEnd = event.endDateUTC + 'T' + event.endTimeUTC;
+                        const nowUTC = now.toISOString().split('T')[0] + 'T' +
+                                      String(now.getUTCHours()).padStart(2, '0') + ':' +
+                                      String(now.getUTCMinutes()).padStart(2, '0');
+                        isCurrent = (nowUTC >= eventStart && nowUTC <= eventEnd);
+                    }
+
+                    // Only gray out if event is completely past (ended) and not current
+                    const isPast = (dateComparable < today) && !isCurrent;
                     const pastClass = isPast ? 'past' : '';
                     let eventHTML = '';
 
