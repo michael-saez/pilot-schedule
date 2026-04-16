@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-15T06:42:00Z",
+  "lastUpdated": "2026-04-15T19:00:00Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -189,59 +189,6 @@
           "endDateLT": "05/02/26",
           "endTimeLT": "11:32",
           "blockHours": "0:00"
-        }
-      ]
-    },
-    {
-      "tripId": "A70539",
-      "startLT": "05/09/26",
-      "endLT": "05/13/26",
-      "events": [
-        {
-          "type": "flight",
-          "flightNumber": "UPS80",
-          "position": "F/O",
-          "route": "ANC-PVG",
-          "aircraft": "747",
-          "startDateUTC": "05/09/26",
-          "startTimeUTC": "18:45",
-          "endDateUTC": "05/10/26",
-          "endTimeUTC": "04:10",
-          "startDateLT": "05/09/26",
-          "startTimeLT": "10:45",
-          "endDateLT": "05/10/26",
-          "endTimeLT": "12:10",
-          "blockHours": "9:25"
-        },
-        {
-          "type": "layover",
-          "city": "PVG",
-          "hotel": "Conrad Shanghai",
-          "startDateUTC": "05/10/26",
-          "startTimeUTC": "04:10",
-          "endDateUTC": "05/12/26",
-          "endTimeUTC": "11:35",
-          "startDateLT": "05/10/26",
-          "startTimeLT": "12:10",
-          "endDateLT": "05/12/26",
-          "endTimeLT": "19:35",
-          "restHours": "54:55"
-        },
-        {
-          "type": "flight",
-          "flightNumber": "UPS81",
-          "position": "F/O",
-          "route": "PVG-ANC",
-          "aircraft": "747",
-          "startDateUTC": "05/12/26",
-          "startTimeUTC": "13:05",
-          "endDateUTC": "05/12/26",
-          "endTimeUTC": "21:49",
-          "startDateLT": "05/12/26",
-          "startTimeLT": "21:05",
-          "endDateLT": "05/12/26",
-          "endTimeLT": "13:49",
-          "blockHours": "8:44"
         }
       ]
     },
@@ -539,6 +486,59 @@
           "endDateLT": "04/28/26",
           "endTimeLT": "06:57",
           "restHours": 2.8
+        }
+      ]
+    },
+    {
+      "tripId": "A70547",
+      "startLT": "05/10/26",
+      "endLT": "05/13/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "UPS1934",
+          "position": "F/O",
+          "route": "ANC-HKG",
+          "aircraft": "747",
+          "blockHours": "11:02",
+          "startDateUTC": "05/10/26",
+          "startTimeUTC": "22:28",
+          "endDateUTC": "05/11/26",
+          "endTimeUTC": "09:30",
+          "startDateLT": "05/10/26",
+          "startTimeLT": "14:28",
+          "endDateLT": "05/11/26",
+          "endTimeLT": "17:30"
+        },
+        {
+          "type": "layover",
+          "city": "HKG",
+          "hotel": "New World Millennium",
+          "restHours": "48:15",
+          "startDateUTC": "05/11/26",
+          "startTimeUTC": "10:00",
+          "endDateUTC": "05/13/26",
+          "endTimeUTC": "10:15",
+          "startDateLT": "05/11/26",
+          "startTimeLT": "18:00",
+          "endDateLT": "05/13/26",
+          "endTimeLT": "18:15"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS59",
+          "position": "R/O",
+          "route": "HKG-ANC",
+          "aircraft": "747",
+          "blockHours": "9:51",
+          "startDateUTC": "05/13/26",
+          "startTimeUTC": "11:45",
+          "endDateUTC": "05/13/26",
+          "endTimeUTC": "21:36",
+          "startDateLT": "05/13/26",
+          "startTimeLT": "19:45",
+          "endDateLT": "05/13/26",
+          "endTimeLT": "13:36"
         }
       ]
     }
