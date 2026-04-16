@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-15T06:40:00Z",
+  "lastUpdated": "2026-04-15T06:42:00Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -481,7 +481,7 @@
           "blockHours": "6:48"
         },
         {
-          "type": "jumpseat",
+          "type": "flight",
           "flightNumber": "UPS0105",
           "position": "JS",
           "route": "ANC-SDF",
@@ -496,7 +496,7 @@
           "restHours": 10.4
         },
         {
-          "type": "jumpseat",
+          "type": "flight",
           "flightNumber": "UPS1124",
           "position": "JS",
           "route": "SDF-ALB",
@@ -511,7 +511,7 @@
           "restHours": 1.83
         },
         {
-          "type": "jumpseat",
+          "type": "flight",
           "flightNumber": "UPS1123",
           "position": "JS",
           "route": "ALB-SDF",
@@ -526,7 +526,7 @@
           "restHours": 2.02
         },
         {
-          "type": "jumpseat",
+          "type": "flight",
           "flightNumber": "UPS0104",
           "position": "JS",
           "route": "SDF-ANC",
