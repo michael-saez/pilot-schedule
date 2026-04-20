@@ -58,8 +58,8 @@ module.exports = async function handler(req, res) {
     'X-WR-CALNAME:Pilot Schedule',
     'X-WR-CALDESC:Flight schedule – Michael Saez (ANC base)',
     'X-WR-TIMEZONE:UTC',
-    'REFRESH-INTERVAL;VALUE=DURATION:PT1H',
-    'X-PUBLISHED-TTL:PT1H',
+    'REFRESH-INTERVAL;VALUE=DURATION:PT5M',
+    'X-PUBLISHED-TTL:PT5M',
   ];
 
   for (const trip of schedule.trips) {
