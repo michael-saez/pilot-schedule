@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-15T19:00:00Z",
+  "lastUpdated": "2026-04-20T11:50:12Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -309,22 +309,6 @@
           "endDateLT": "04/22/26",
           "endTimeLT": "20:27",
           "restHours": "76:37"
-        },
-        {
-          "type": "flight",
-          "flightNumber": "UPS2",
-          "position": "R/O",
-          "route": "CGN-HKG",
-          "aircraft": "747",
-          "startDateUTC": "04/22/26",
-          "startTimeUTC": "18:27",
-          "endDateUTC": "04/23/26",
-          "endTimeUTC": "06:15",
-          "startDateLT": "04/22/26",
-          "startTimeLT": "20:27",
-          "endDateLT": "04/23/26",
-          "endTimeLT": "14:15",
-          "blockHours": "11:48"
         },
         {
           "type": "layover",
