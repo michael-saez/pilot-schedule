@@ -140,6 +140,8 @@
     <script>
         // Comprehensive airport database (loaded at runtime)
         let airportCities = {};
+        // IATA -> { city, tz, ups? }   tz is an IANA name like "Asia/Tokyo"
+        let airportTimezones = {};
 
         // Load airport database
         async function loadAirportDatabase() {
@@ -153,9 +155,105 @@
             }
         }
 
+        // Load IATA -> IANA timezone database (built from airportsdata, covers full UPS network)
+        async function loadAirportTimezones() {
+            try {
+                const response = await fetch('airport-timezones.json');
+                if (response.ok) {
+                    airportTimezones = await response.json();
+                }
+            } catch (error) {
+                console.warn('Could not load airport timezone database:', error);
+            }
+        }
+
         function getCityName(code) {
             // Use the comprehensive database, fallback to code if not found
             return airportCities[code] || code;
+        }
+
+        function getTimeZone(code) {
+            // Returns IANA tz name (e.g. "Asia/Tokyo") or null if unknown.
+            return (airportTimezones[code] && airportTimezones[code].tz) || null;
+        }
+
+        // Convert a UTC date+time stored as MM/DD/YY HH:MM (Z) into the local
+        // wall-clock date+time at the airport with IATA code `iata`.
+        // Returns { date: "MM/DD/YY", time: "HH:MM" } or null if tz is unknown.
+        //
+        // This is the core fix for the dateline / DST / midnight-rollover bugs:
+        // we never do offset arithmetic by hand. We construct an absolute UTC
+        // instant, then ask Intl.DateTimeFormat (i.e. the OS's tzdata) where
+        // that instant points on the wall clock in the airport's IANA zone.
+        function utcToLocal(dateMmddyy, timeHhmm, iata) {
+            const tz = getTimeZone(iata);
+            if (!tz || !dateMmddyy || !timeHhmm) return null;
+            const [m, d, y] = dateMmddyy.split('/').map(s => parseInt(s, 10));
+            const [hh, mm] = timeHhmm.split(':').map(s => parseInt(s, 10));
+            // Build an absolute UTC instant. Date.UTC is the only safe way.
+            const utcMs = Date.UTC(2000 + y, m - 1, d, hh, mm, 0);
+            const instant = new Date(utcMs);
+            if (isNaN(instant.getTime())) return null;
+            const fmt = new Intl.DateTimeFormat('en-US', {
+                timeZone: tz,
+                year: '2-digit', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', hour12: false,
+            });
+            const parts = {};
+            for (const p of fmt.formatToParts(instant)) parts[p.type] = p.value;
+            // Intl returns "24" for midnight under hour12:false — normalize to "00".
+            if (parts.hour === '24') parts.hour = '00';
+            return {
+                date: `${parts.month}/${parts.day}/${parts.year}`,
+                time: `${parts.hour}:${parts.minute}`,
+            };
+        }
+
+        // Walk every event, compute display LT from UTC + tz, attach to the
+        // event, and collect any mismatches with stored LT. Mismatches mean
+        // the JSON was written with bad offset math somewhere upstream — we
+        // surface them but DO NOT fail; we just prefer the computed value.
+        function annotateDisplayTimes(data) {
+            const driftIssues = [];
+            const recordDrift = (label, side, stored, computed) => {
+                driftIssues.push(`${label} ${side}: stored ${stored.date} ${stored.time} → computed ${computed.date} ${computed.time}`);
+            };
+
+            for (const trip of data.trips || []) {
+                for (const ev of trip.events || []) {
+                    let originIata = null, destIata = null;
+                    if (ev.type === 'flight') {
+                        const parts = (ev.route || '').split('-');
+                        if (parts.length === 2) { originIata = parts[0]; destIata = parts[1]; }
+                    } else if (ev.type === 'layover') {
+                        originIata = destIata = ev.city;
+                    }
+
+                    const startCalc = utcToLocal(ev.startDateUTC, ev.startTimeUTC, originIata);
+                    const endCalc   = utcToLocal(ev.endDateUTC,   ev.endTimeUTC,   destIata);
+
+                    // Prefer computed; fall back to stored when tz is unknown.
+                    ev._dispStartDateLT = (startCalc && startCalc.date) || ev.startDateLT;
+                    ev._dispStartTimeLT = (startCalc && startCalc.time) || ev.startTimeLT;
+                    ev._dispEndDateLT   = (endCalc   && endCalc.date)   || ev.endDateLT;
+                    ev._dispEndTimeLT   = (endCalc   && endCalc.time)   || ev.endTimeLT;
+
+                    const label = ev.type === 'flight'
+                        ? `${trip.tripId} ${ev.flightNumber || ''} ${ev.route || ''}`.trim()
+                        : `${trip.tripId} layover ${ev.city || ''}`.trim();
+                    if (startCalc && (startCalc.date !== ev.startDateLT || startCalc.time !== ev.startTimeLT)) {
+                        recordDrift(label, 'start',
+                            { date: ev.startDateLT, time: ev.startTimeLT },
+                            startCalc);
+                    }
+                    if (endCalc && (endCalc.date !== ev.endDateLT || endCalc.time !== ev.endTimeLT)) {
+                        recordDrift(label, 'end',
+                            { date: ev.endDateLT, time: ev.endTimeLT },
+                            endCalc);
+                    }
+                }
+            }
+            return driftIssues;
         }
 
         async function loadSchedule() {
@@ -208,13 +306,29 @@
                          String(now.getMonth() + 1).padStart(2, '0') + '-' +
                          String(now.getDate()).padStart(2, '0');
 
-            // Collect all events
+            // Compute display-time LT from UTC + airport IANA tz (the core fix).
+            // After this, events carry _dispStartDateLT / _dispStartTimeLT /
+            // _dispEndDateLT / _dispEndTimeLT — those are what we render.
+            const driftIssues = annotateDisplayTimes(data);
+            if (driftIssues.length > 0) {
+                console.warn(`[tz-drift] ${driftIssues.length} event(s) had stored LT that disagrees with UTC+tz. Showing computed values.`);
+                driftIssues.forEach(m => console.warn(`  ${m}`));
+                const driftDiv = document.createElement('div');
+                driftDiv.className = 'validation-warning';
+                const summary = driftIssues.length === 1
+                    ? `1 event had stored LT that disagreed with UTC+timezone`
+                    : `${driftIssues.length} events had stored LT that disagreed with UTC+timezone`;
+                driftDiv.innerHTML = `<strong>⚠️ Local-time drift:</strong> ${summary}. Showing computed local time. See console for details.`;
+                scheduleDiv.appendChild(driftDiv);
+            }
+
+            // Collect all events (using computed display LT, falling back to stored)
             const allEvents = [];
             data.trips.forEach(trip => {
                 trip.events.forEach(event => {
                     allEvents.push({
-                        dateLocal: event.startDateLT,
-                        timeLocal: event.startTimeLT,
+                        dateLocal: event._dispStartDateLT || event.startDateLT,
+                        timeLocal: event._dispStartTimeLT || event.startTimeLT,
                         dateUTC: event.startDateUTC || '',
                         timeUTC: event.startTimeUTC || '',
                         endDateUTC: event.endDateUTC || '',
@@ -308,16 +422,18 @@
                         let subtitle = `${event.flightNumber} | ${event.position}`;
                         if (event.blockHours) subtitle += ` | ${event.blockHours}`;
 
-                        // Format local dates with day of week
+                        // Format local dates with day of week (using computed display LT)
+                        const dispEndDateLT = event._dispEndDateLT || event.endDateLT;
+                        const dispEndTimeLT = event._dispEndTimeLT || event.endTimeLT;
                         const startDate = parseMMDDYY(item.dateLocal);
-                        const endDate = parseMMDDYY(event.endDateLT);
+                        const endDate = parseMMDDYY(dispEndDateLT);
                         const startDisplay = startDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                         const endDisplay = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-                        const spansMultipleDays = item.dateLocal !== event.endDateLT;
+                        const spansMultipleDays = item.dateLocal !== dispEndDateLT;
 
                         let localTimeDisplay = spansMultipleDays
-                            ? `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${event.endTimeLT}`
-                            : `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${event.endTimeLT}`;
+                            ? `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${dispEndTimeLT}`
+                            : `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${dispEndTimeLT}`;
 
                         let utcTimeDisplay = item.dateUTC 
                             ? `${item.dateUTC} ${item.timeUTC}Z<br/>→ ${item.endDateUTC} ${item.endTimeUTC}Z`
@@ -349,13 +465,17 @@
                         `;
                     } else if (event.type === 'layover') {
                         const layoverCity = getCityName(event.city);
-                        const layoverStartDate = parseMMDDYY(event.startDateLT);
-                        const layoverEndDate = parseMMDDYY(event.endDateLT);
+                        const dispStartDateLT = event._dispStartDateLT || event.startDateLT;
+                        const dispStartTimeLT = event._dispStartTimeLT || event.startTimeLT;
+                        const dispEndDateLT   = event._dispEndDateLT   || event.endDateLT;
+                        const dispEndTimeLT   = event._dispEndTimeLT   || event.endTimeLT;
+                        const layoverStartDate = parseMMDDYY(dispStartDateLT);
+                        const layoverEndDate = parseMMDDYY(dispEndDateLT);
                         const layoverStartDisplay = layoverStartDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                         const layoverEndDisplay = layoverEndDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                         const restHours = event.restHours || 'TBD';
 
-                        let layoverTimeDisplay = `${layoverStartDisplay} ${event.startTimeLT}<br/>→ ${layoverEndDisplay} ${event.endTimeLT}<br/><strong>Rest: ${restHours}</strong>`;
+                        let layoverTimeDisplay = `${layoverStartDisplay} ${dispStartTimeLT}<br/>→ ${layoverEndDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${restHours}</strong>`;
 
                         eventHTML = `
                             <div class="event ${pastClass}" data-date="${item.dateLocal}">
@@ -421,8 +541,8 @@
             }
         }
 
-        // Load airports database, then load schedule
-        loadAirportDatabase().then(() => loadSchedule());
+        // Load airport city + IANA-tz databases in parallel, then load schedule
+        Promise.all([loadAirportDatabase(), loadAirportTimezones()]).then(() => loadSchedule());
     </script>
 
     <div class="footer">
