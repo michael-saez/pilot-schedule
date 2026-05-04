@@ -71,6 +71,7 @@
         .event-icon.layover { border-color: #8b5cf6; color: #8b5cf6; }
         .event-icon.jumpseat { border-color: #f59e0b; color: #f59e0b; }
         .event-icon.deadhead { border-color: #475569; color: #64748b; }
+        .event-icon.commercial { border-color: #f97316; color: #f97316; }
         .event-details { }
         .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
         .event-subtitle { font-size: 13px; color: #94a3b8; }
@@ -417,6 +418,10 @@
                         if (event.position === 'JS') {
                             icon = '🪑';
                             iconClass = 'jumpseat';
+                        }
+                        if (event.position === 'DH' && event.flightNumber && !event.flightNumber.startsWith('UPS')) {
+                            icon = '🛫';
+                            iconClass = 'commercial';
                         }
 
                         let subtitle = `${event.flightNumber} | ${event.position}`;
