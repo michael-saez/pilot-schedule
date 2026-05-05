@@ -127,12 +127,46 @@
             overflow-wrap: break-word;
         }
         .validation-warning strong { font-weight: 600; }
+
+        .ical-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            padding: 6px 14px;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .ical-link:hover {
+            border-color: #60a5fa;
+            color: #93c5fd;
+        }
+        .ical-link svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Michael's Schedule</h1>
         <div class="subtitle">Cargo Pilot | ANC Base</div>
+        <a class="ical-link" href="webcal://michaelsaez.com/api/calendar" title="Subscribe in Calendar">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="2" width="14" height="13" rx="2"/>
+                <line x1="1" y1="6" x2="15" y2="6"/>
+                <line x1="5" y1="1" x2="5" y2="4"/>
+                <line x1="11" y1="1" x2="11" y2="4"/>
+            </svg>
+            Subscribe to Calendar
+        </a>
     </div>
 
     <div class="last-updated" id="lastUpdated">Loading...</div>
