@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-05T08:17:38Z",
+  "lastUpdated": "2026-05-05T08:20:44Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -491,13 +491,13 @@
           "type": "layover",
           "city": "HKG",
           "hotel": "New World Millennium",
-          "restHours": "55:00",
-          "startDateLT": "05/10/26",
-          "startTimeLT": "11:15",
+          "restHours": "77:20",
+          "startDateLT": "05/09/26",
+          "startTimeLT": "12:55",
           "endDateLT": "05/12/26",
           "endTimeLT": "18:15",
-          "startDateUTC": "05/10/26",
-          "startTimeUTC": "03:15",
+          "startDateUTC": "05/09/26",
+          "startTimeUTC": "04:55",
           "endDateUTC": "05/12/26",
           "endTimeUTC": "10:15"
         },
