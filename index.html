@@ -116,17 +116,7 @@
         .footer { text-align: center; padding: 30px 20px; font-size: 12px; color: #64748b; }
         .loading { text-align: center; padding: 40px 20px; }
         .error { text-align: center; padding: 40px 20px; color: #ef4444; }
-        .validation-warning {
-            background: #fef3c7;
-            border-bottom: 2px solid #f59e0b;
-            padding: 14px 20px;
-            color: #92400e;
-            font-size: 13px;
-            text-align: center;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        .validation-warning strong { font-weight: 600; }
+
 
         .ical-link {
             display: inline-flex;
@@ -348,13 +338,7 @@
             if (driftIssues.length > 0) {
                 console.warn(`[tz-drift] ${driftIssues.length} event(s) had stored LT that disagrees with UTC+tz. Showing computed values.`);
                 driftIssues.forEach(m => console.warn(`  ${m}`));
-                const driftDiv = document.createElement('div');
-                driftDiv.className = 'validation-warning';
-                const summary = driftIssues.length === 1
-                    ? `1 event had stored LT that disagreed with UTC+timezone`
-                    : `${driftIssues.length} events had stored LT that disagreed with UTC+timezone`;
-                driftDiv.innerHTML = `<strong>⚠️ Local-time drift:</strong> ${summary}. Showing computed local time. See console for details.`;
-                scheduleDiv.appendChild(driftDiv);
+
             }
 
             // Collect all events (using computed display LT, falling back to stored)
@@ -385,10 +369,6 @@
             // Validate chronological order
             const chronoIssues = validateChronology(allEvents);
             if (chronoIssues.length > 0) {
-                const warningDiv = document.createElement('div');
-                warningDiv.className = 'validation-warning';
-                warningDiv.innerHTML = `<strong>⚠️ Schedule Chronology Issue:</strong> ${chronoIssues[0]}`;
-                scheduleDiv.insertBefore(warningDiv, scheduleDiv.firstChild);
                 console.error('Chronology validation failed:', chronoIssues);
             }
 
