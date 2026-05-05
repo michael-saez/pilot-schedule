@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-05T08:11:23Z",
+  "lastUpdated": "2026-05-05T08:17:38Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -468,24 +468,24 @@
     },
     {
       "tripId": "27700",
-      "startLT": "05/09/26",
+      "startLT": "05/08/26",
       "endLT": "05/12/26",
       "events": [
         {
           "type": "flight",
-          "flightNumber": "UPS66",
-          "position": "DH",
+          "flightNumber": "UPS0062",
+          "position": "JS",
           "route": "ANC-HKG",
           "aircraft": "747",
           "blockHours": "0:00",
-          "startDateLT": "05/09/26",
-          "startTimeLT": "07:43",
-          "endDateLT": "05/10/26",
-          "endTimeLT": "10:45",
-          "startDateUTC": "05/09/26",
-          "startTimeUTC": "15:43",
-          "endDateUTC": "05/10/26",
-          "endTimeUTC": "02:45"
+          "startDateLT": "05/08/26",
+          "startTimeLT": "09:53",
+          "endDateLT": "05/09/26",
+          "endTimeLT": "12:55",
+          "startDateUTC": "05/08/26",
+          "startTimeUTC": "17:53",
+          "endDateUTC": "05/09/26",
+          "endTimeUTC": "04:55"
         },
         {
           "type": "layover",
