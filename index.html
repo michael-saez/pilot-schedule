@@ -372,154 +372,138 @@
                 console.error('Chronology validation failed:', chronoIssues);
             }
 
-            // Group by LOCAL date for display
-            const eventsByDate = {};
-            allEvents.forEach(item => {
-                const date = item.dateLocal;
-                if (!eventsByDate[date]) eventsByDate[date] = [];
-                eventsByDate[date].push(item);
-            });
+            // ── Archive all past events except the most recent one ──────────
+            const nowUtcStr = now.toISOString().slice(0, 10) + 'T' +
+                String(now.getUTCHours()).padStart(2, '0') + ':' +
+                String(now.getUTCMinutes()).padStart(2, '0');
 
-            // Render
-            Object.keys(eventsByDate).sort().forEach(dateStr => {
-                const date = parseMMDDYY(dateStr);
-                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                const year = date.getFullYear();
-                scheduleDiv.innerHTML += `<div class="day-header">${dayName} ${monthDay} ${year}</div>`;
+            function isFullyPast(item) {
+                if (!item.endDateUTC || !item.endTimeUTC) return false;
+                const d = parseMMDDYY(item.endDateUTC);
+                const endISO = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' +
+                               String(d.getDate()).padStart(2,'0') + 'T' + item.endTimeUTC;
+                return endISO < nowUtcStr;
+            }
 
-                eventsByDate[dateStr].forEach(item => {
-                    const event = item.event;
-                    // Convert dateStr (MM/DD/YY) to YYYY-MM-DD for comparison
-                    const dateObj = parseMMDDYY(dateStr);
-                    const dateComparable = dateObj.getFullYear() + '-' +
-                                         String(dateObj.getMonth() + 1).padStart(2, '0') + '-' +
-                                         String(dateObj.getDate()).padStart(2, '0');
+            const pastItems     = allEvents.filter(isFullyPast);
+            const upcomingItems = allEvents.filter(e => !isFullyPast(e));
+            const archivedItems = pastItems.slice(0, -1);
+            const visibleItems  = [...pastItems.slice(-1), ...upcomingItems];
 
-                    // Check if event is currently in progress (start <= now <= end)
-                    let isCurrent = false;
-                    if (item.dateUTC && item.timeUTC && event.endDateUTC && event.endTimeUTC) {
-                        // Convert MM/DD/YY dates to YYYY-MM-DD for proper comparison
-                        const startDateObj = parseMMDDYY(item.dateUTC);
-                        const endDateObj = parseMMDDYY(event.endDateUTC);
-                        const startDateISO = startDateObj.getFullYear() + '-' +
-                                           String(startDateObj.getMonth() + 1).padStart(2, '0') + '-' +
-                                           String(startDateObj.getDate()).padStart(2, '0');
-                        const endDateISO = endDateObj.getFullYear() + '-' +
-                                         String(endDateObj.getMonth() + 1).padStart(2, '0') + '-' +
-                                         String(endDateObj.getDate()).padStart(2, '0');
+            // ── Build a single event's HTML ───────────────────────────────────
+            function buildEventHTML(item) {
+                const event = item.event;
+                const dateObj = parseMMDDYY(item.dateLocal);
+                const dateComparable = dateObj.getFullYear() + '-' +
+                    String(dateObj.getMonth()+1).padStart(2,'0') + '-' +
+                    String(dateObj.getDate()).padStart(2,'0');
+                let isCurrent = false;
+                if (item.dateUTC && item.timeUTC && event.endDateUTC && event.endTimeUTC) {
+                    const sd = parseMMDDYY(item.dateUTC), ed = parseMMDDYY(event.endDateUTC);
+                    const sISO = sd.getFullYear()+'-'+String(sd.getMonth()+1).padStart(2,'0')+'-'+String(sd.getDate()).padStart(2,'0');
+                    const eISO = ed.getFullYear()+'-'+String(ed.getMonth()+1).padStart(2,'0')+'-'+String(ed.getDate()).padStart(2,'0');
+                    isCurrent = (nowUtcStr >= sISO+'T'+item.timeUTC && nowUtcStr <= eISO+'T'+event.endTimeUTC);
+                }
+                const isPast = (dateComparable < today) && !isCurrent;
+                const pastClass = isPast ? 'past' : '';
 
-                        const eventStart = startDateISO + 'T' + item.timeUTC;
-                        const eventEnd = endDateISO + 'T' + event.endTimeUTC;
-                        const nowUTC = now.toISOString().split('T')[0] + 'T' +
-                                      String(now.getUTCHours()).padStart(2, '0') + ':' +
-                                      String(now.getUTCMinutes()).padStart(2, '0');
-                        isCurrent = (nowUTC >= eventStart && nowUTC <= eventEnd);
-                    }
+                if (event.type === 'flight') {
+                    let icon = '✈️', iconClass = 'flight';
+                    if (event.position === 'DH') { icon = '😴'; iconClass = 'deadhead'; }
+                    if (event.position === 'JS') { icon = '🪑'; iconClass = 'jumpseat'; }
+                    if (event.position === 'DH' && event.flightNumber && !event.flightNumber.startsWith('UPS')) { icon = '🍸'; iconClass = 'commercial'; }
+                    const subtitle = `${event.flightNumber} | ${event.position}` + (event.blockHours ? ` | ${event.blockHours}` : '');
+                    const dispEndDateLT = event._dispEndDateLT || event.endDateLT;
+                    const dispEndTimeLT = event._dispEndTimeLT || event.endTimeLT;
+                    const startDisplay = parseMMDDYY(item.dateLocal).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const endDisplay   = parseMMDDYY(dispEndDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const localTimeDisplay = `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${dispEndTimeLT}`;
+                    const utcTimeDisplay   = item.dateUTC ? `${item.dateUTC} ${item.timeUTC}Z<br/>→ ${item.endDateUTC} ${item.endTimeUTC}Z` : '(pending)';
+                    const routeParts = event.route.split('-');
+                    const cityRoute  = routeParts.length === 2 ? `${getCityName(routeParts[0])} → ${getCityName(routeParts[1])}` : event.route;
+                    return `<div class="event ${pastClass}" data-date="${item.dateLocal}">
+                        <div class="event-icon ${iconClass}">${icon}</div>
+                        <div class="event-details">
+                            <div class="event-title">${cityRoute}</div>
+                            <div class="event-subtitle">${subtitle}</div>
+                        </div>
+                        <div class="event-times">
+                            <div class="time-column"><div class="time-label">Local</div>${localTimeDisplay}</div>
+                            <div class="time-column utc"><div class="time-label">UTC</div>${utcTimeDisplay}</div>
+                        </div>
+                    </div>`;
+                } else if (event.type === 'layover') {
+                    const layoverCity    = getCityName(event.city);
+                    const dispStartDateLT = event._dispStartDateLT || event.startDateLT;
+                    const dispStartTimeLT = event._dispStartTimeLT || event.startTimeLT;
+                    const dispEndDateLT   = event._dispEndDateLT   || event.endDateLT;
+                    const dispEndTimeLT   = event._dispEndTimeLT   || event.endTimeLT;
+                    const startDisplay = parseMMDDYY(dispStartDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const endDisplay   = parseMMDDYY(dispEndDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const layoverTimeDisplay = `${startDisplay} ${dispStartTimeLT}<br/>→ ${endDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${event.restHours || 'TBD'}</strong>`;
+                    return `<div class="event ${pastClass}" data-date="${item.dateLocal}">
+                        <div class="event-icon layover">🛏️</div>
+                        <div class="event-details">
+                            <div class="event-title">Layover in ${layoverCity}</div>
+                            <div class="event-subtitle">${event.hotel}</div>
+                        </div>
+                        <div class="event-times">
+                            <div class="time-column"><div class="time-label">Local</div>${layoverTimeDisplay}</div>
+                            <div class="time-column utc"><div class="time-label">UTC</div>${event.startDateUTC} ${event.startTimeUTC}Z<br/>→ ${event.endDateUTC} ${event.endTimeUTC}Z</div>
+                        </div>
+                    </div>`;
+                }
+                return '';
+            }
 
-                    // Only gray out if event is completely past (ended) and not current
-                    const isPast = (dateComparable < today) && !isCurrent;
-                    const pastClass = isPast ? 'past' : '';
-                    let eventHTML = '';
-
-                    if (event.type === 'flight') {
-                        let icon = '✈️';
-                        let iconClass = 'flight';
-                        if (event.position === 'DH') {
-                            icon = '😴';
-                            iconClass = 'deadhead';
-                        }
-                        if (event.position === 'JS') {
-                            icon = '🪑';
-                            iconClass = 'jumpseat';
-                        }
-                        if (event.position === 'DH' && event.flightNumber && !event.flightNumber.startsWith('UPS')) {
-                            icon = '🍸';
-                            iconClass = 'commercial';
-                        }
-
-                        let subtitle = `${event.flightNumber} | ${event.position}`;
-                        if (event.blockHours) subtitle += ` | ${event.blockHours}`;
-
-                        // Format local dates with day of week (using computed display LT)
-                        const dispEndDateLT = event._dispEndDateLT || event.endDateLT;
-                        const dispEndTimeLT = event._dispEndTimeLT || event.endTimeLT;
-                        const startDate = parseMMDDYY(item.dateLocal);
-                        const endDate = parseMMDDYY(dispEndDateLT);
-                        const startDisplay = startDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-                        const endDisplay = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-                        const spansMultipleDays = item.dateLocal !== dispEndDateLT;
-
-                        let localTimeDisplay = spansMultipleDays
-                            ? `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${dispEndTimeLT}`
-                            : `${startDisplay} ${item.timeLocal}<br/>→ ${endDisplay} ${dispEndTimeLT}`;
-
-                        let utcTimeDisplay = item.dateUTC 
-                            ? `${item.dateUTC} ${item.timeUTC}Z<br/>→ ${item.endDateUTC} ${item.endTimeUTC}Z`
-                            : '(pending)';
-
-                        const routeParts = event.route.split('-');
-                        const cityRoute = routeParts.length === 2
-                            ? `${getCityName(routeParts[0])} → ${getCityName(routeParts[1])}`
-                            : event.route;
-
-                        eventHTML = `
-                            <div class="event ${pastClass}" data-date="${item.dateLocal}">
-                                <div class="event-icon ${iconClass}">${icon}</div>
-                                <div class="event-details">
-                                    <div class="event-title">${cityRoute}</div>
-                                    <div class="event-subtitle">${subtitle}</div>
-                                </div>
-                                <div class="event-times">
-                                    <div class="time-column">
-                                        <div class="time-label">Local</div>
-                                        ${localTimeDisplay}
-                                    </div>
-                                    <div class="time-column utc">
-                                        <div class="time-label">UTC</div>
-                                        ${utcTimeDisplay}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    } else if (event.type === 'layover') {
-                        const layoverCity = getCityName(event.city);
-                        const dispStartDateLT = event._dispStartDateLT || event.startDateLT;
-                        const dispStartTimeLT = event._dispStartTimeLT || event.startTimeLT;
-                        const dispEndDateLT   = event._dispEndDateLT   || event.endDateLT;
-                        const dispEndTimeLT   = event._dispEndTimeLT   || event.endTimeLT;
-                        const layoverStartDate = parseMMDDYY(dispStartDateLT);
-                        const layoverEndDate = parseMMDDYY(dispEndDateLT);
-                        const layoverStartDisplay = layoverStartDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-                        const layoverEndDisplay = layoverEndDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-                        const restHours = event.restHours || 'TBD';
-
-                        let layoverTimeDisplay = `${layoverStartDisplay} ${dispStartTimeLT}<br/>→ ${layoverEndDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${restHours}</strong>`;
-
-                        eventHTML = `
-                            <div class="event ${pastClass}" data-date="${item.dateLocal}">
-                                <div class="event-icon layover">🛏️</div>
-                                <div class="event-details">
-                                    <div class="event-title">Layover in ${layoverCity}</div>
-                                    <div class="event-subtitle">${event.hotel}</div>
-                                </div>
-                                <div class="event-times">
-                                    <div class="time-column">
-                                        <div class="time-label">Local</div>
-                                        ${layoverTimeDisplay}
-                                    </div>
-                                    <div class="time-column utc">
-                                        <div class="time-label">UTC</div>
-                                        ${event.startDateUTC} ${event.startTimeUTC}Z<br/>→ ${event.endDateUTC} ${event.endTimeUTC}Z
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-
-                    scheduleDiv.innerHTML += eventHTML;
+            // ── Render a list of items grouped by local date ──────────────────
+            function renderItems(items) {
+                const byDate = {};
+                items.forEach(item => {
+                    if (!byDate[item.dateLocal]) byDate[item.dateLocal] = [];
+                    byDate[item.dateLocal].push(item);
                 });
-            });
+                return Object.keys(byDate).sort().map(dateStr => {
+                    const date    = parseMMDDYY(dateStr);
+                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                    const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    return `<div class="day-header">${dayName} ${monthDay} ${date.getFullYear()}</div>` +
+                           byDate[dateStr].map(buildEventHTML).join('');
+                }).join('');
+            }
+
+            // ── Assemble and inject ───────────────────────────────────────────
+            let scheduleHTML = '';
+            if (archivedItems.length > 0) {
+                const n = archivedItems.length;
+                const showLabel = `Show ${n} older event${n === 1 ? '' : 's'}`;
+                scheduleHTML += `
+                    <div style="text-align:center;padding:14px 20px 6px">
+                        <button id="archive-toggle" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid #334155;border-radius:20px;background:transparent;color:#64748b;font-size:12px;font-weight:500;letter-spacing:0.02em;cursor:pointer;transition:border-color 0.2s,color 0.2s;">
+                            <svg id="archive-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;transition:transform 0.2s"><polyline points="2 5 8 11 14 5"/></svg>
+                            <span id="archive-label">${showLabel}</span>
+                        </button>
+                    </div>
+                    <div id="archived-section" style="display:none">${renderItems(archivedItems)}</div>`;
+            }
+            scheduleHTML += renderItems(visibleItems);
+            scheduleDiv.innerHTML = scheduleHTML;
+
+            if (archivedItems.length > 0) {
+                const n = archivedItems.length;
+                const showLabel = `Show ${n} older event${n === 1 ? '' : 's'}`;
+                document.getElementById('archive-toggle').addEventListener('click', function () {
+                    const section  = document.getElementById('archived-section');
+                    const label    = document.getElementById('archive-label');
+                    const chevron  = document.getElementById('archive-chevron');
+                    const isOpen   = section.style.display !== 'none';
+                    section.style.display         = isOpen ? 'none' : 'block';
+                    label.textContent             = isOpen ? showLabel : 'Hide older events';
+                    chevron.style.transform        = isOpen ? '' : 'rotate(180deg)';
+                    this.style.borderColor         = isOpen ? '' : '#60a5fa';
+                    this.style.color               = isOpen ? '' : '#93c5fd';
+                });
+            }
 
             // Auto-scroll to next upcoming event
             scrollToNextEvent();
