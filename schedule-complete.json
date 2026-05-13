@@ -872,6 +872,57 @@
           "blockHours": "10:03"
         }
       ]
+    },
+    {
+      "tripId": "A70528B",
+      "tentative": true,
+      "startLT": "07/09/26",
+      "endLT": "07/12/26",
+      "events": [
+        {
+          "type": "flight",
+          "flightNumber": "TBD",
+          "position": "JS",
+          "route": "ALB-SDF",
+          "blockHours": "0:00",
+          "startDateUTC": "07/10/26",
+          "startTimeUTC": "01:00",
+          "endDateUTC": "07/10/26",
+          "endTimeUTC": "TBD",
+          "startDateLT": "07/09/26",
+          "startTimeLT": "21:00",
+          "endDateLT": "07/09/26",
+          "endTimeLT": "TBD"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "TBD",
+          "position": "JS",
+          "route": "SDF-ANC",
+          "blockHours": "0:00",
+          "startDateUTC": "07/10/26",
+          "startTimeUTC": "04:00",
+          "endDateUTC": "07/10/26",
+          "endTimeUTC": "TBD",
+          "startDateLT": "07/10/26",
+          "startTimeLT": "00:00",
+          "endDateLT": "07/10/26",
+          "endTimeLT": "TBD"
+        },
+        {
+          "type": "training",
+          "description": "Simulator Training",
+          "city": "ANC",
+          "startDateUTC": "07/11/26",
+          "startTimeUTC": "15:30",
+          "endDateUTC": "07/12/26",
+          "endTimeUTC": "00:30",
+          "startDateLT": "07/11/26",
+          "startTimeLT": "07:30",
+          "endDateLT": "07/11/26",
+          "endTimeLT": "16:30"
+        }
+      ]
     }
   ]
 }
