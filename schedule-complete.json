@@ -872,58 +872,6 @@
           "blockHours": "10:03"
         }
       ]
-    },
-    {
-      "tripId": "A70528",
-      "tentative": true,
-      "startLT": "06/30/26",
-      "endLT": "07/02/26",
-      "events": [
-        {
-          "type": "flight",
-          "flightNumber": "UPS80",
-          "position": "F/O",
-          "route": "ANC-PVG",
-          "startDateLT": "06/30/26",
-          "startTimeLT": "09:00",
-          "endDateLT": "07/01/26",
-          "endTimeLT": "10:25",
-          "startDateUTC": "06/30/26",
-          "startTimeUTC": "17:00",
-          "endDateUTC": "07/01/26",
-          "endTimeUTC": "02:25",
-          "blockHours": "9:25"
-        },
-        {
-          "type": "layover",
-          "city": "PVG",
-          "hotel": "TBD",
-          "restHours": "34:40",
-          "startDateLT": "07/01/26",
-          "startTimeLT": "10:25",
-          "endDateLT": "07/02/26",
-          "endTimeLT": "21:05",
-          "startDateUTC": "07/01/26",
-          "startTimeUTC": "02:25",
-          "endDateUTC": "07/02/26",
-          "endTimeUTC": "13:05"
-        },
-        {
-          "type": "flight",
-          "flightNumber": "UPS81",
-          "position": "F/O",
-          "route": "PVG-ANC",
-          "startDateLT": "07/02/26",
-          "startTimeLT": "21:05",
-          "endDateLT": "07/02/26",
-          "endTimeLT": "13:49",
-          "startDateUTC": "07/02/26",
-          "startTimeUTC": "13:05",
-          "endDateUTC": "07/02/26",
-          "endTimeUTC": "21:49",
-          "blockHours": "8:44"
-        }
-      ]
     }
   ]
 }
