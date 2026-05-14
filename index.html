@@ -1,3 +1,4 @@
+SHA: 79126c188b7af3e98ad5ef1ab31d4e92d2e79771
 <!DOCTYPE html>
 <!-- Generated: 2026-04-13T20:15Z -->
 <html lang="en">
@@ -71,6 +72,7 @@
         .event-icon.jumpseat { border-color: #f59e0b; color: #f59e0b; }
         .event-icon.deadhead { border-color: #475569; color: #64748b; }
         .event-icon.commercial { border-color: #f97316; color: #f97316; }
+        .event-icon.training { border-color: #10b981; color: #10b981; }
         .event-details { }
         .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
         .event-subtitle { font-size: 13px; color: #94a3b8; }
@@ -452,6 +454,25 @@
                             <div class="time-column utc"><div class="time-label">UTC</div>${event.startDateUTC} ${event.startTimeUTC}Z<br/>→ ${event.endDateUTC} ${event.endTimeUTC}Z</div>
                         </div>
                     </div>`;
+                } else if (event.type === 'training') {
+                    const dispStartDateLT = event._dispStartDateLT || event.startDateLT;
+                    const dispStartTimeLT = event._dispStartTimeLT || event.startTimeLT;
+                    const dispEndDateLT   = event._dispEndDateLT   || event.endDateLT;
+                    const dispEndTimeLT   = event._dispEndTimeLT   || event.endTimeLT;
+                    const startDisplay = parseMMDDYY(dispStartDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const endDisplay   = parseMMDDYY(dispEndDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const trainingTimeDisplay = `${startDisplay} ${dispStartTimeLT}<br/>→ ${endDisplay} ${dispEndTimeLT}`;
+                    return `<div class="event ${pastClass}" data-date="${item.dateLocal}">
+                        <div class="event-icon training">🎓</div>
+                        <div class="event-details">
+                            <div class="event-title">${event.description || 'Training'}</div>
+                            <div class="event-subtitle">${event.city || ''}</div>
+                        </div>
+                        <div class="event-times">
+                            <div class="time-column"><div class="time-label">Local</div>${trainingTimeDisplay}</div>
+                            <div class="time-column utc"><div class="time-label">UTC</div>${event.startDateUTC} ${event.startTimeUTC}Z<br/>→ ${event.endDateUTC} ${event.endTimeUTC}Z</div>
+                        </div>
+                    </div>`;
                 }
                 return '';
             }
@@ -553,4 +574,5 @@
     </div>
 </body>
 </html>
+
 
