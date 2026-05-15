@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-13T08:16:08Z",
+  "lastUpdated": "2026-05-15T18:19:23Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -534,41 +534,55 @@
           "startDateLT": "05/15/26",
           "startTimeLT": "11:23",
           "endDateLT": "05/16/26",
-          "endTimeLT": "14:25",
+          "endTimeLT": "14:55",
           "startDateUTC": "05/15/26",
           "startTimeUTC": "19:23",
           "endDateUTC": "05/16/26",
-          "endTimeUTC": "06:25"
+          "endTimeUTC": "06:55"
         },
         {
           "type": "layover",
           "city": "HKG",
           "hotel": "New World Millennium",
-          "restHours": "51:20",
+          "restHours": "20:05",
           "startDateLT": "05/16/26",
           "startTimeLT": "14:55",
-          "endDateLT": "05/18/26",
-          "endTimeLT": "18:15",
+          "endDateLT": "05/17/26",
+          "endTimeLT": "11:00",
           "startDateUTC": "05/16/26",
           "startTimeUTC": "06:55",
+          "endDateUTC": "05/17/26",
+          "endTimeUTC": "03:00"
+        },
+        {
+          "type": "layover",
+          "city": "SZX",
+          "hotel": "JW Marriott Shenzhen",
+          "restHours": "30:05",
+          "startDateLT": "05/17/26",
+          "startTimeLT": "13:30",
+          "endDateLT": "05/18/26",
+          "endTimeLT": "19:35",
+          "startDateUTC": "05/17/26",
+          "startTimeUTC": "05:30",
           "endDateUTC": "05/18/26",
-          "endTimeUTC": "10:15"
+          "endTimeUTC": "11:35"
         },
         {
           "type": "flight",
-          "flightNumber": "UPS59",
-          "position": "DH",
-          "route": "HKG-ANC",
+          "flightNumber": "UPS71",
+          "position": "F/O",
+          "route": "SZX-ANC",
           "aircraft": "747",
-          "blockHours": "0:00",
-          "startDateLT": "05/18/26",
-          "startTimeLT": "19:45",
+          "blockHours": "10:03",
+          "startDateLT": "05/19/26",
+          "startTimeLT": "05:05",
           "endDateLT": "05/18/26",
-          "endTimeLT": "13:36",
+          "endTimeLT": "23:08",
           "startDateUTC": "05/18/26",
-          "startTimeUTC": "11:45",
-          "endDateUTC": "05/18/26",
-          "endTimeUTC": "21:36"
+          "startTimeUTC": "21:05",
+          "endDateUTC": "05/19/26",
+          "endTimeUTC": "07:08"
         }
       ]
     },
