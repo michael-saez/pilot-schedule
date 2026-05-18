@@ -36,7 +36,6 @@ SHA: 79126c188b7af3e98ad5ef1ab31d4e92d2e79771
             border-bottom: 1px solid #334155;
         }
         .header h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-        .last-updated { text-align: center; padding: 10px; font-size: 11px; color: #64748b; }
         .day-header {
             background: #0f172a;
             padding: 12px 20px;
@@ -73,7 +72,7 @@ SHA: 79126c188b7af3e98ad5ef1ab31d4e92d2e79771
         .event-icon.deadhead { border-color: #475569; color: #64748b; }
         .event-icon.commercial { border-color: #f97316; color: #f97316; }
         .event-icon.training { border-color: #10b981; color: #10b981; }
-        .event-icon.domicile { border-color: #84cc16; color: #84cc16; }
+        .event-icon.domicile { border-color: #78716c; color: #78716c; }
         .event-details { }
         .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
         .event-subtitle { font-size: 13px; color: #94a3b8; }
@@ -161,7 +160,6 @@ SHA: 79126c188b7af3e98ad5ef1ab31d4e92d2e79771
         </a>
     </div>
 
-    <div class="last-updated" id="lastUpdated">Loading...</div>
     <div id="schedule"></div>
 
     <script>
@@ -326,9 +324,6 @@ SHA: 79126c188b7af3e98ad5ef1ab31d4e92d2e79771
 
         function renderSchedule(data) {
             const scheduleDiv = document.getElementById('schedule');
-            const lastUpdatedDiv = document.getElementById('lastUpdated');
-            const lastUpdated = new Date().toISOString().split('T')[0];
-            lastUpdatedDiv.textContent = `Updated ${lastUpdated}`;
 
             const now = new Date();
             const today = now.getFullYear() + '-' +
