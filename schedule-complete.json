@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T03:40:13Z",
+  "lastUpdated": "2026-05-18T08:34:12Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -636,15 +636,16 @@
     },
     {
       "tripId": "A70577",
-      "tentative": true,
       "startLT": "05/25/26",
       "endLT": "05/28/26",
       "events": [
         {
           "type": "flight",
           "flightNumber": "UPS1934",
-          "position": "F/O",
+          "position": "R/O",
           "route": "ANC-HKG",
+          "aircraft": "747",
+          "blockHours": "11:02",
           "startDateLT": "05/25/26",
           "startTimeLT": "13:58",
           "endDateLT": "05/26/26",
@@ -652,20 +653,49 @@
           "startDateUTC": "05/25/26",
           "startTimeUTC": "21:58",
           "endDateUTC": "05/26/26",
-          "endTimeUTC": "09:00",
-          "blockHours": "11:02"
+          "endTimeUTC": "09:00"
         },
         {
           "type": "layover",
           "city": "HKG",
           "hotel": "Home",
-          "restHours": "51:10",
+          "restHours": "21:35",
           "startDateLT": "05/26/26",
           "startTimeLT": "17:00",
-          "endDateLT": "05/28/26",
-          "endTimeLT": "20:10",
+          "endDateLT": "05/27/26",
+          "endTimeLT": "16:05",
           "startDateUTC": "05/26/26",
           "startTimeUTC": "09:00",
+          "endDateUTC": "05/27/26",
+          "endTimeUTC": "08:05"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS61",
+          "position": "DH",
+          "route": "HKG-TPE",
+          "aircraft": "747",
+          "blockHours": "0:00",
+          "startDateLT": "05/27/26",
+          "startTimeLT": "16:05",
+          "endDateLT": "05/27/26",
+          "endTimeLT": "17:50",
+          "startDateUTC": "05/27/26",
+          "startTimeUTC": "08:05",
+          "endDateUTC": "05/27/26",
+          "endTimeUTC": "09:50"
+        },
+        {
+          "type": "layover",
+          "city": "TPE",
+          "hotel": "Sheraton Taipei",
+          "restHours": "26:20",
+          "startDateLT": "05/27/26",
+          "startTimeLT": "17:50",
+          "endDateLT": "05/28/26",
+          "endTimeLT": "20:10",
+          "startDateUTC": "05/27/26",
+          "startTimeUTC": "09:50",
           "endDateUTC": "05/28/26",
           "endTimeUTC": "12:10"
         },
@@ -674,6 +704,8 @@
           "flightNumber": "UPS61",
           "position": "F/O",
           "route": "TPE-ANC",
+          "aircraft": "747",
+          "blockHours": "8:52",
           "startDateLT": "05/28/26",
           "startTimeLT": "20:10",
           "endDateLT": "05/28/26",
@@ -681,14 +713,12 @@
           "startDateUTC": "05/28/26",
           "startTimeUTC": "12:10",
           "endDateUTC": "05/28/26",
-          "endTimeUTC": "21:02",
-          "blockHours": "8:52"
+          "endTimeUTC": "21:02"
         }
       ]
     },
     {
       "tripId": "A70735",
-      "tentative": true,
       "startLT": "05/29/26",
       "endLT": "06/05/26",
       "events": [
@@ -739,7 +769,7 @@
         {
           "type": "layover",
           "city": "CGN",
-          "hotel": "TBD",
+          "hotel": "Cologne Marriott Hotel",
           "restHours": "32:57",
           "startDateLT": "06/02/26",
           "startTimeLT": "22:30",
@@ -753,7 +783,7 @@
         {
           "type": "flight",
           "flightNumber": "UPS8",
-          "position": "F/O",
+          "position": "R/O",
           "route": "CGN-SZX",
           "startDateLT": "06/04/26",
           "startTimeLT": "07:27",
@@ -768,7 +798,7 @@
         {
           "type": "layover",
           "city": "SZX",
-          "hotel": "TBD",
+          "hotel": "JW Marriott Shenzhen",
           "restHours": "27:55",
           "startDateLT": "06/05/26",
           "startTimeLT": "01:10",
@@ -782,7 +812,7 @@
         {
           "type": "flight",
           "flightNumber": "UPS71",
-          "position": "F/O",
+          "position": "R/O",
           "route": "SZX-ANC",
           "startDateLT": "06/06/26",
           "startTimeLT": "05:05",
@@ -798,7 +828,6 @@
     },
     {
       "tripId": "A70736",
-      "tentative": true,
       "startLT": "06/12/26",
       "endLT": "06/19/26",
       "events": [
@@ -849,7 +878,7 @@
         {
           "type": "layover",
           "city": "CGN",
-          "hotel": "TBD",
+          "hotel": "Cologne Marriott Hotel",
           "restHours": "32:57",
           "startDateLT": "06/16/26",
           "startTimeLT": "22:30",
@@ -878,7 +907,7 @@
         {
           "type": "layover",
           "city": "SZX",
-          "hotel": "TBD",
+          "hotel": "JW Marriott Shenzhen",
           "restHours": "27:55",
           "startDateLT": "06/19/26",
           "startTimeLT": "01:10",
