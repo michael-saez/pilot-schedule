@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T01:14:54Z",
+  "lastUpdated": "2026-05-18T01:38:02Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -59,7 +59,7 @@
     {
       "tripId": "Jumpseats",
       "startLT": "04/02/26",
-      "endLT": "05/20/26",
+      "endLT": "05/28/26",
       "events": [
         {
           "type": "flight",
@@ -200,6 +200,38 @@
           "startTimeUTC": "17:53",
           "endDateUTC": "05/20/26",
           "endTimeUTC": "04:55"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS0065",
+          "position": "JS",
+          "route": "HKG-ANC",
+          "aircraft": "74Y",
+          "blockHours": "0:00",
+          "startDateLT": "05/25/26",
+          "startTimeLT": "13:20",
+          "endDateLT": "05/25/26",
+          "endTimeLT": "07:06",
+          "startDateUTC": "05/25/26",
+          "startTimeUTC": "05:20",
+          "endDateUTC": "05/25/26",
+          "endTimeUTC": "15:06"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS0061",
+          "position": "JS",
+          "route": "HKG-TPE",
+          "aircraft": "74N",
+          "blockHours": "0:00",
+          "startDateLT": "05/28/26",
+          "startTimeLT": "16:05",
+          "endDateLT": "05/28/26",
+          "endTimeLT": "17:50",
+          "startDateUTC": "05/28/26",
+          "startTimeUTC": "08:05",
+          "endDateUTC": "05/28/26",
+          "endTimeUTC": "09:50"
         }
       ]
     },
