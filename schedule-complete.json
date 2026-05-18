@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T08:34:12Z",
+  "lastUpdated": "2026-05-18T08:53:56Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -53,6 +53,25 @@
           "endDateLT": "04/02/26",
           "endTimeLT": "07:46",
           "blockHours": "8:01"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-Apr02",
+      "startLT": "04/02/26",
+      "endLT": "04/02/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "7:00",
+          "startDateLT": "04/02/26",
+          "startTimeLT": "07:46",
+          "endDateLT": "04/02/26",
+          "endTimeLT": "14:46",
+          "startDateUTC": "04/02/26",
+          "startTimeUTC": "15:46",
+          "endDateUTC": "04/02/26",
+          "endTimeUTC": "22:46"
         }
       ]
     },
@@ -236,6 +255,25 @@
       ]
     },
     {
+      "tripId": "DomRest-Apr11",
+      "startLT": "04/11/26",
+      "endLT": "04/11/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "4:04",
+          "startDateLT": "04/11/26",
+          "startTimeLT": "07:34",
+          "endDateLT": "04/11/26",
+          "endTimeLT": "11:38",
+          "startDateUTC": "04/11/26",
+          "startTimeUTC": "15:34",
+          "endDateUTC": "04/11/26",
+          "endTimeUTC": "19:38"
+        }
+      ]
+    },
+    {
       "tripId": "21769",
       "startLT": "04/11/26",
       "endLT": "04/15/26",
@@ -285,6 +323,25 @@
           "endDateLT": "04/15/26",
           "endTimeLT": "04:01",
           "blockHours": "9:46"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-Apr15",
+      "startLT": "04/15/26",
+      "endLT": "04/16/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "29:52",
+          "startDateLT": "04/15/26",
+          "startTimeLT": "04:01",
+          "endDateLT": "04/16/26",
+          "endTimeLT": "09:53",
+          "startDateUTC": "04/15/26",
+          "startTimeUTC": "12:01",
+          "endDateUTC": "04/16/26",
+          "endTimeUTC": "17:53"
         }
       ]
     },
@@ -402,6 +459,44 @@
       ]
     },
     {
+      "tripId": "DomRest-Apr24",
+      "startLT": "04/24/26",
+      "endLT": "04/24/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "0:49",
+          "startDateLT": "04/24/26",
+          "startTimeLT": "13:36",
+          "endDateLT": "04/24/26",
+          "endTimeLT": "14:25",
+          "startDateUTC": "04/24/26",
+          "startTimeUTC": "21:36",
+          "endDateUTC": "04/24/26",
+          "endTimeUTC": "22:25"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-Apr28",
+      "startLT": "04/28/26",
+      "endLT": "04/28/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "7:31",
+          "startDateLT": "04/28/26",
+          "startTimeLT": "06:57",
+          "endDateLT": "04/28/26",
+          "endTimeLT": "14:28",
+          "startDateUTC": "04/28/26",
+          "startTimeUTC": "14:57",
+          "endDateUTC": "04/28/26",
+          "endTimeUTC": "22:28"
+        }
+      ]
+    },
+    {
       "tripId": "A70621",
       "startLT": "04/28/26",
       "endLT": "05/07/26",
@@ -515,6 +610,25 @@
       ]
     },
     {
+      "tripId": "DomRest-May07",
+      "startLT": "05/07/26",
+      "endLT": "05/08/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "21:02",
+          "startDateLT": "05/07/26",
+          "startTimeLT": "12:51",
+          "endDateLT": "05/08/26",
+          "endTimeLT": "09:53",
+          "startDateUTC": "05/07/26",
+          "startTimeUTC": "20:51",
+          "endDateUTC": "05/08/26",
+          "endTimeUTC": "17:53"
+        }
+      ]
+    },
+    {
       "tripId": "27700",
       "startLT": "05/08/26",
       "endLT": "05/12/26",
@@ -564,6 +678,25 @@
           "startTimeUTC": "11:45",
           "endDateUTC": "05/12/26",
           "endTimeUTC": "21:36"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-May12",
+      "startLT": "05/12/26",
+      "endLT": "05/15/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "69:47",
+          "startDateLT": "05/12/26",
+          "startTimeLT": "13:36",
+          "endDateLT": "05/15/26",
+          "endTimeLT": "11:23",
+          "startDateUTC": "05/12/26",
+          "startTimeUTC": "21:36",
+          "endDateUTC": "05/15/26",
+          "endTimeUTC": "19:23"
         }
       ]
     },
@@ -631,6 +764,44 @@
           "startTimeUTC": "21:05",
           "endDateUTC": "05/19/26",
           "endTimeUTC": "07:08"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-May18",
+      "startLT": "05/18/26",
+      "endLT": "05/19/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "10:45",
+          "startDateLT": "05/18/26",
+          "startTimeLT": "23:08",
+          "endDateLT": "05/19/26",
+          "endTimeLT": "09:53",
+          "startDateUTC": "05/19/26",
+          "startTimeUTC": "07:08",
+          "endDateUTC": "05/19/26",
+          "endTimeUTC": "17:53"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-May25",
+      "startLT": "05/25/26",
+      "endLT": "05/25/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "6:52",
+          "startDateLT": "05/25/26",
+          "startTimeLT": "07:06",
+          "endDateLT": "05/25/26",
+          "endTimeLT": "13:58",
+          "startDateUTC": "05/25/26",
+          "startTimeUTC": "15:06",
+          "endDateUTC": "05/25/26",
+          "endTimeUTC": "21:58"
         }
       ]
     },
@@ -714,6 +885,25 @@
           "startTimeUTC": "12:10",
           "endDateUTC": "05/28/26",
           "endTimeUTC": "21:02"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-May28",
+      "startLT": "05/28/26",
+      "endLT": "05/29/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "27:31",
+          "startDateLT": "05/28/26",
+          "startTimeLT": "13:02",
+          "endDateLT": "05/29/26",
+          "endTimeLT": "16:33",
+          "startDateUTC": "05/28/26",
+          "startTimeUTC": "21:02",
+          "endDateUTC": "05/30/26",
+          "endTimeUTC": "00:33"
         }
       ]
     },
@@ -823,6 +1013,25 @@
           "endDateUTC": "06/06/26",
           "endTimeUTC": "07:08",
           "blockHours": "10:03"
+        }
+      ]
+    },
+    {
+      "tripId": "DomRest-Jun05",
+      "startLT": "06/05/26",
+      "endLT": "06/12/26",
+      "events": [
+        {
+          "type": "domicileRest",
+          "restHours": "161:25",
+          "startDateLT": "06/05/26",
+          "startTimeLT": "23:08",
+          "endDateLT": "06/12/26",
+          "endTimeLT": "16:33",
+          "startDateUTC": "06/06/26",
+          "startTimeUTC": "07:08",
+          "endDateUTC": "06/13/26",
+          "endTimeUTC": "00:33"
         }
       ]
     },
