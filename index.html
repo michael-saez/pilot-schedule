@@ -201,6 +201,25 @@
             return (airportTimezones[code] && airportTimezones[code].tz) || null;
         }
 
+        // Format a restHours string (H:MM) for display.
+        // If total time is >= 24 hours, returns "Xd Yh Zm" for readability.
+        // If under 24 hours, returns the original "H:MM" string unchanged.
+        function formatRestHours(hhmm) {
+            if (!hhmm || hhmm === 'TBD') return hhmm || 'TBD';
+            const parts = hhmm.split(':');
+            if (parts.length !== 2) return hhmm;
+            const totalHours = parseInt(parts[0], 10);
+            const minutes    = parseInt(parts[1], 10);
+            if (isNaN(totalHours) || isNaN(minutes)) return hhmm;
+            if (totalHours < 24) return hhmm;
+            const days      = Math.floor(totalHours / 24);
+            const remHours  = totalHours % 24;
+            if (remHours === 0 && minutes === 0) return `${days}d`;
+            if (minutes === 0) return `${days}d ${remHours}h`;
+            if (remHours === 0) return `${days}d ${minutes}m`;
+            return `${days}d ${remHours}h ${minutes}m`;
+        }
+
         // Convert a UTC date+time stored as MM/DD/YY HH:MM (Z) into the local
         // wall-clock date+time at the airport with IATA code `iata`.
         // Returns { date: "MM/DD/YY", time: "HH:MM" } or null if tz is unknown.
@@ -477,12 +496,13 @@
                     const dispEndTimeLT   = event._dispEndTimeLT   || event.endTimeLT;
                     const startDisplay = parseMMDDYY(dispStartDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                     const endDisplay   = parseMMDDYY(dispEndDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-                    const restTimeDisplay = `${startDisplay} ${dispStartTimeLT}<br/>→ ${endDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${event.restHours || 'TBD'}</strong>`;
+                    const restFormatted = formatRestHours(event.restHours);
+                    const restTimeDisplay = `${startDisplay} ${dispStartTimeLT}<br/>→ ${endDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${restFormatted}</strong>`;
                     return `<div class="event ${pastClass}" data-date="${item.dateLocal}">
                         <div class="event-icon domicile">⛺</div>
                         <div class="event-details">
                             <div class="event-title">Domicile Rest — Anchorage</div>
-                            <div class="event-subtitle">${event.restHours || ''}</div>
+                            <div class="event-subtitle">${restFormatted}</div>
                         </div>
                         <div class="event-times">
                             <div class="time-column"><div class="time-label">Local</div>${restTimeDisplay}</div>
@@ -590,5 +610,6 @@
     </div>
 </body>
 </html>
+
 
 
