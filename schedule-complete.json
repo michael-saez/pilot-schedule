@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T03:37:15Z",
+  "lastUpdated": "2026-05-18T03:40:13Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -259,7 +259,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "New World Millennium",
+          "hotel": "Home",
           "startDateUTC": "04/12/26",
           "startTimeUTC": "06:40",
           "endDateUTC": "04/15/26",
@@ -312,7 +312,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "New World Millennium",
+          "hotel": "Home",
           "startDateUTC": "04/17/26",
           "startTimeUTC": "04:55",
           "endDateUTC": "04/18/26",
@@ -372,7 +372,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "New World Millennium",
+          "hotel": "Home",
           "startDateUTC": "04/23/26",
           "startTimeUTC": "06:15",
           "endDateUTC": "04/24/26",
@@ -538,7 +538,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "New World Millennium",
+          "hotel": "Home",
           "restHours": "77:20",
           "startDateLT": "05/09/26",
           "startTimeLT": "12:55",
@@ -591,7 +591,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "New World Millennium",
+          "hotel": "Home",
           "restHours": "20:05",
           "startDateLT": "05/16/26",
           "startTimeLT": "14:55",
@@ -710,7 +710,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "TBD",
+          "hotel": "Home",
           "restHours": "68:05",
           "startDateLT": "05/30/26",
           "startTimeLT": "19:35",
@@ -820,7 +820,7 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "TBD",
+          "hotel": "Home",
           "restHours": "68:05",
           "startDateLT": "06/13/26",
           "startTimeLT": "19:35",
