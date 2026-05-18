@@ -411,7 +411,8 @@
                     if (event.position === 'CPT') { icon = '✈️'; iconClass = 'flight'; }
                     if (event.position === 'DH' && event.flightNumber && !event.flightNumber.startsWith('UPS')) { icon = '🍸'; iconClass = 'commercial'; }
                     const positionDisplay = positionLabels[event.position] || event.position;
-                    const subtitle = `${event.flightNumber} | ${positionDisplay}` + (event.blockHours ? ` | ${event.blockHours}` : '');
+                    const subtitleLine1 = `${event.flightNumber}` + (event.blockHours ? ` | ${event.blockHours}` : '');
+                    const subtitle = `${subtitleLine1}<br/><span style="opacity:0.7">${positionDisplay}</span>`;
                     const dispEndDateLT = event._dispEndDateLT || event.endDateLT;
                     const dispEndTimeLT = event._dispEndTimeLT || event.endTimeLT;
                     const startDisplay = parseMMDDYY(item.dateLocal).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
