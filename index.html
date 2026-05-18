@@ -404,11 +404,14 @@
                 const pastClass = isPast ? 'past' : '';
 
                 if (event.type === 'flight') {
+                    const positionLabels = { 'F/O': 'First Officer', 'R/O': 'Relief Officer', 'JS': 'Jumpseat', 'DH': 'Deadhead', 'CPT': 'Captain' };
                     let icon = '✈️', iconClass = 'flight';
                     if (event.position === 'DH') { icon = '😴'; iconClass = 'deadhead'; }
                     if (event.position === 'JS') { icon = '🪑'; iconClass = 'jumpseat'; }
+                    if (event.position === 'CPT') { icon = '✈️'; iconClass = 'flight'; }
                     if (event.position === 'DH' && event.flightNumber && !event.flightNumber.startsWith('UPS')) { icon = '🍸'; iconClass = 'commercial'; }
-                    const subtitle = `${event.flightNumber} | ${event.position}` + (event.blockHours ? ` | ${event.blockHours}` : '');
+                    const positionDisplay = positionLabels[event.position] || event.position;
+                    const subtitle = `${event.flightNumber} | ${positionDisplay}` + (event.blockHours ? ` | ${event.blockHours}` : '');
                     const dispEndDateLT = event._dispEndDateLT || event.endDateLT;
                     const dispEndTimeLT = event._dispEndTimeLT || event.endTimeLT;
                     const startDisplay = parseMMDDYY(item.dateLocal).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
