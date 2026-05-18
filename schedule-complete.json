@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T15:53:00Z",
+  "lastUpdated": "2026-05-18T15:57:42Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -830,15 +830,15 @@
           "type": "layover",
           "city": "HKG",
           "hotel": "Home",
-          "restHours": "21:35",
+          "restHours": "51:10",
           "startDateLT": "05/26/26",
           "startTimeLT": "17:00",
-          "endDateLT": "05/27/26",
-          "endTimeLT": "16:05",
+          "endDateLT": "05/28/26",
+          "endTimeLT": "20:10",
           "startDateUTC": "05/26/26",
           "startTimeUTC": "09:00",
-          "endDateUTC": "05/27/26",
-          "endTimeUTC": "08:05"
+          "endDateUTC": "05/28/26",
+          "endTimeUTC": "12:10"
         },
         {
           "type": "flight",
