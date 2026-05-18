@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-15T18:19:23Z",
+  "lastUpdated": "2026-05-18T01:14:54Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -59,7 +59,7 @@
     {
       "tripId": "Jumpseats",
       "startLT": "04/02/26",
-      "endLT": "04/11/26",
+      "endLT": "05/20/26",
       "events": [
         {
           "type": "flight",
@@ -138,7 +138,7 @@
           "startTimeLT": "14:25",
           "endDateLT": "04/25/26",
           "endTimeLT": "00:49",
-          "restHours": 10.4
+          "blockHours": "0:00"
         },
         {
           "type": "flight",
@@ -153,7 +153,7 @@
           "startTimeLT": "05:06",
           "endDateLT": "04/25/26",
           "endTimeLT": "06:56",
-          "restHours": 1.83
+          "blockHours": "0:00"
         },
         {
           "type": "flight",
@@ -168,7 +168,7 @@
           "startTimeLT": "20:48",
           "endDateLT": "04/27/26",
           "endTimeLT": "22:49",
-          "restHours": 2.02
+          "blockHours": "0:00"
         },
         {
           "type": "flight",
@@ -183,7 +183,23 @@
           "startTimeLT": "04:09",
           "endDateLT": "04/28/26",
           "endTimeLT": "06:57",
-          "restHours": 2.8
+          "blockHours": "0:00"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS0062",
+          "position": "JS",
+          "route": "ANC-HKG",
+          "aircraft": "74N",
+          "blockHours": "0:00",
+          "startDateLT": "05/19/26",
+          "startTimeLT": "09:53",
+          "endDateLT": "05/20/26",
+          "endTimeLT": "12:55",
+          "startDateUTC": "05/19/26",
+          "startTimeUTC": "17:53",
+          "endDateUTC": "05/20/26",
+          "endTimeUTC": "04:55"
         }
       ]
     },
