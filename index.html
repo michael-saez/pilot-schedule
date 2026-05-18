@@ -465,7 +465,7 @@
                         <div class="event-icon training">🖥️</div>
                         <div class="event-details">
                             <div class="event-title">${event.description || 'Training'}</div>
-                            <div class="event-subtitle">${event.city || ''}</div>
+                            <div class="event-subtitle">${event.city ? getCityName(event.city) : ''}</div>
                         </div>
                         <div class="event-times">
                             <div class="time-column"><div class="time-label">Local</div>${trainingTimeDisplay}</div>
