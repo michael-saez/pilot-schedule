@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T08:53:56Z",
+  "lastUpdated": "2026-05-18T15:53:00Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -839,36 +839,6 @@
           "startTimeUTC": "09:00",
           "endDateUTC": "05/27/26",
           "endTimeUTC": "08:05"
-        },
-        {
-          "type": "flight",
-          "flightNumber": "UPS61",
-          "position": "DH",
-          "route": "HKG-TPE",
-          "aircraft": "747",
-          "blockHours": "0:00",
-          "startDateLT": "05/27/26",
-          "startTimeLT": "16:05",
-          "endDateLT": "05/27/26",
-          "endTimeLT": "17:50",
-          "startDateUTC": "05/27/26",
-          "startTimeUTC": "08:05",
-          "endDateUTC": "05/27/26",
-          "endTimeUTC": "09:50"
-        },
-        {
-          "type": "layover",
-          "city": "TPE",
-          "hotel": "Sheraton Taipei",
-          "restHours": "26:20",
-          "startDateLT": "05/27/26",
-          "startTimeLT": "17:50",
-          "endDateLT": "05/28/26",
-          "endTimeLT": "20:10",
-          "startDateUTC": "05/27/26",
-          "startTimeUTC": "09:50",
-          "endDateUTC": "05/28/26",
-          "endTimeUTC": "12:10"
         },
         {
           "type": "flight",
