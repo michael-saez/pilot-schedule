@@ -82,7 +82,7 @@
       "events": [
         {
           "type": "flight",
-          "flightNumber": "UPS0099",
+          "flightNumber": "UPS99",
           "position": "JS",
           "route": "ANC-SDF",
           "aircraft": "757",
@@ -146,7 +146,7 @@
         },
         {
           "type": "flight",
-          "flightNumber": "UPS0105",
+          "flightNumber": "UPS105",
           "position": "JS",
           "route": "ANC-SDF",
           "startDateUTC": "04/24/26",
@@ -157,7 +157,7 @@
           "startTimeLT": "14:25",
           "endDateLT": "04/25/26",
           "endTimeLT": "00:49",
-          "blockHours": "0:00"
+          "blockHours": "6:24"
         },
         {
           "type": "flight",
@@ -172,7 +172,7 @@
           "startTimeLT": "05:06",
           "endDateLT": "04/25/26",
           "endTimeLT": "06:56",
-          "blockHours": "0:00"
+          "blockHours": "1:50"
         },
         {
           "type": "flight",
@@ -187,11 +187,11 @@
           "startTimeLT": "20:48",
           "endDateLT": "04/27/26",
           "endTimeLT": "22:49",
-          "blockHours": "0:00"
+          "blockHours": "2:01"
         },
         {
           "type": "flight",
-          "flightNumber": "UPS0104",
+          "flightNumber": "UPS104",
           "position": "JS",
           "route": "SDF-ANC",
           "startDateUTC": "04/28/26",
@@ -202,15 +202,15 @@
           "startTimeLT": "04:09",
           "endDateLT": "04/28/26",
           "endTimeLT": "06:57",
-          "blockHours": "0:00"
+          "blockHours": "6:48"
         },
         {
           "type": "flight",
-          "flightNumber": "UPS0062",
+          "flightNumber": "UPS62",
           "position": "JS",
           "route": "ANC-HKG",
           "aircraft": "74N",
-          "blockHours": "0:00",
+          "blockHours": "11:02",
           "startDateLT": "05/19/26",
           "startTimeLT": "09:53",
           "endDateLT": "05/20/26",
@@ -222,11 +222,11 @@
         },
         {
           "type": "flight",
-          "flightNumber": "UPS0065",
+          "flightNumber": "UPS65",
           "position": "JS",
           "route": "HKG-ANC",
           "aircraft": "74Y",
-          "blockHours": "0:00",
+          "blockHours": "9:46",
           "startDateLT": "05/25/26",
           "startTimeLT": "13:20",
           "endDateLT": "05/25/26",
@@ -238,11 +238,11 @@
         },
         {
           "type": "flight",
-          "flightNumber": "UPS0061",
+          "flightNumber": "UPS61",
           "position": "JS",
           "route": "HKG-TPE",
           "aircraft": "74N",
-          "blockHours": "0:00",
+          "blockHours": "1:45",
           "startDateLT": "05/28/26",
           "startTimeLT": "16:05",
           "endDateLT": "05/28/26",
@@ -635,11 +635,11 @@
       "events": [
         {
           "type": "flight",
-          "flightNumber": "UPS0062",
+          "flightNumber": "UPS62",
           "position": "JS",
           "route": "ANC-HKG",
           "aircraft": "747",
-          "blockHours": "0:00",
+          "blockHours": "11:02",
           "startDateLT": "05/08/26",
           "startTimeLT": "09:53",
           "endDateLT": "05/09/26",
