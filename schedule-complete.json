@@ -78,7 +78,7 @@
     {
       "tripId": "Jumpseats",
       "startLT": "04/02/26",
-      "endLT": "05/28/26",
+      "endLT": "05/25/26",
       "events": [
         {
           "type": "flight",
@@ -235,22 +235,6 @@
           "startTimeUTC": "05:20",
           "endDateUTC": "05/25/26",
           "endTimeUTC": "15:06"
-        },
-        {
-          "type": "flight",
-          "flightNumber": "UPS61",
-          "position": "JS",
-          "route": "HKG-TPE",
-          "aircraft": "74N",
-          "blockHours": "1:45",
-          "startDateLT": "05/28/26",
-          "startTimeLT": "16:05",
-          "endDateLT": "05/28/26",
-          "endTimeLT": "17:50",
-          "startDateUTC": "05/28/26",
-          "startTimeUTC": "08:05",
-          "endDateUTC": "05/28/26",
-          "endTimeUTC": "09:50"
         }
       ]
     },
