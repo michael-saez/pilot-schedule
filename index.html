@@ -410,7 +410,10 @@
                     if (event.position === 'JS') { icon = '🪑'; iconClass = 'jumpseat'; }
                     if (event.position === 'CPT') { icon = '✈️'; iconClass = 'flight'; }
                     if (event.position === 'DH' && event.flightNumber && !event.flightNumber.startsWith('UPS')) { icon = '🍸'; iconClass = 'commercial'; }
-                    const positionDisplay = positionLabels[event.position] || event.position;
+                    let positionDisplay = positionLabels[event.position] || event.position;
+                    if (event.position === 'JS') {
+                        positionDisplay = (event.flightNumber && !event.flightNumber.startsWith('UPS')) ? 'Passenger Jumpseat' : 'Cargo Jumpseat';
+                    }
                     const subtitleLine1 = `${event.flightNumber}` + (event.blockHours ? ` | ${event.blockHours}` : '');
                     const subtitle = `${subtitleLine1}<br/><span style="opacity:0.7">${positionDisplay}</span>`;
                     const dispEndDateLT = event._dispEndDateLT || event.endDateLT;
