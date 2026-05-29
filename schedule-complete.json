@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T15:57:42Z",
+  "lastUpdated": "2026-05-28",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -829,32 +829,32 @@
         {
           "type": "layover",
           "city": "HKG",
-          "hotel": "Home",
-          "restHours": "51:10",
+          "hotel": "New World Millennium",
+          "restHours": "44:03",
           "startDateLT": "05/26/26",
-          "startTimeLT": "17:00",
+          "startTimeLT": "16:27",
           "endDateLT": "05/28/26",
-          "endTimeLT": "20:10",
+          "endTimeLT": "12:30",
           "startDateUTC": "05/26/26",
-          "startTimeUTC": "09:00",
+          "startTimeUTC": "08:27",
           "endDateUTC": "05/28/26",
-          "endTimeUTC": "12:10"
+          "endTimeUTC": "04:30"
         },
         {
           "type": "flight",
-          "flightNumber": "UPS61",
+          "flightNumber": "UPS6059",
           "position": "F/O",
-          "route": "TPE-ANC",
+          "route": "HKG-ANC",
           "aircraft": "747",
-          "blockHours": "8:52",
+          "blockHours": "9:56",
           "startDateLT": "05/28/26",
-          "startTimeLT": "20:10",
+          "startTimeLT": "14:01",
           "endDateLT": "05/28/26",
-          "endTimeLT": "13:02",
+          "endTimeLT": "07:57",
           "startDateUTC": "05/28/26",
-          "startTimeUTC": "12:10",
+          "startTimeUTC": "06:01",
           "endDateUTC": "05/28/26",
-          "endTimeUTC": "21:02"
+          "endTimeUTC": "15:57"
         }
       ]
     },
