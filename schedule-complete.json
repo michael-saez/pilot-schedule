@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-28",
+  "lastUpdated": "2026-05-29T07:01:28Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -78,7 +78,7 @@
     {
       "tripId": "Jumpseats",
       "startLT": "04/02/26",
-      "endLT": "05/25/26",
+      "endLT": "06/06/26",
       "events": [
         {
           "type": "flight",
@@ -235,6 +235,54 @@
           "startTimeUTC": "05:20",
           "endDateUTC": "05/25/26",
           "endTimeUTC": "15:06"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS71",
+          "position": "JS",
+          "route": "ANC-SDF",
+          "aircraft": "74N",
+          "blockHours": "6:07",
+          "startDateLT": "06/06/26",
+          "startTimeLT": "01:13",
+          "endDateLT": "06/06/26",
+          "endTimeLT": "11:20",
+          "startDateUTC": "06/06/26",
+          "startTimeUTC": "09:13",
+          "endDateUTC": "06/06/26",
+          "endTimeUTC": "15:20"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UA4067",
+          "position": "JS",
+          "route": "SDF-IAD",
+          "aircraft": "E175",
+          "blockHours": "1:44",
+          "startDateLT": "06/06/26",
+          "startTimeLT": "13:48",
+          "endDateLT": "06/06/26",
+          "endTimeLT": "15:32",
+          "startDateUTC": "06/06/26",
+          "startTimeUTC": "17:48",
+          "endDateUTC": "06/06/26",
+          "endTimeUTC": "19:32"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UA4926",
+          "position": "JS",
+          "route": "IAD-ALB",
+          "aircraft": "ERJ",
+          "blockHours": "1:43",
+          "startDateLT": "06/06/26",
+          "startTimeLT": "17:30",
+          "endDateLT": "06/06/26",
+          "endTimeLT": "19:13",
+          "startDateUTC": "06/06/26",
+          "startTimeUTC": "21:30",
+          "endDateUTC": "06/06/26",
+          "endTimeUTC": "23:13"
         }
       ]
     },
