@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T12:00:08Z",
+  "lastUpdated": "2026-06-07T12:09:50Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -971,25 +971,6 @@
           "startTimeUTC": "20:30",
           "endDateUTC": "06/04/26",
           "endTimeUTC": "05:27"
-        }
-      ]
-    },
-    {
-      "tripId": "DomRest-Jun05",
-      "startLT": "06/05/26",
-      "endLT": "06/12/26",
-      "events": [
-        {
-          "type": "domicileRest",
-          "restHours": "161:25",
-          "startDateLT": "06/05/26",
-          "startTimeLT": "23:08",
-          "endDateLT": "06/12/26",
-          "endTimeLT": "16:33",
-          "startDateUTC": "06/06/26",
-          "startTimeUTC": "07:08",
-          "endDateUTC": "06/13/26",
-          "endTimeUTC": "00:33"
         }
       ]
     },
