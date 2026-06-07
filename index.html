@@ -75,6 +75,8 @@
         .event-details { }
         .event-title { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
         .event-subtitle { font-size: 13px; color: #94a3b8; }
+        .hotel-info { margin-top: 5px; display: flex; flex-direction: column; gap: 3px; }
+        .hotel-info-line { font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 4px; }
         .t-mark { font-size: 0.45em; opacity: 0.2; vertical-align: super; margin-left: 3px; }
         .event-times {
             display: grid;
@@ -445,11 +447,13 @@
                     const startDisplay = parseMMDDYY(dispStartDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                     const endDisplay   = parseMMDDYY(dispEndDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                     const layoverTimeDisplay = `${startDisplay} ${dispStartTimeLT}<br/>→ ${endDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${event.restHours || 'TBD'}</strong>`;
+                    const hotelInfoHtml = (event.hotelAddress || event.hotelPhone) ? `<div class="hotel-info">${event.hotelAddress ? `<span class="hotel-info-line">📍 ${event.hotelAddress}</span>` : ''}${event.hotelPhone ? `<span class="hotel-info-line">📞 ${event.hotelPhone}</span>` : ''}</div>` : '';
                     return `<div class="event ${pastClass}" data-date="${item.dateLocal}">
                         <div class="event-icon layover">🛏️</div>
                         <div class="event-details">
                             <div class="event-title">Layover in ${layoverCity}</div>
                             <div class="event-subtitle">${event.hotel}</div>
+                            ${hotelInfoHtml}
                         </div>
                         <div class="event-times">
                             <div class="time-column"><div class="time-label">Local</div>${layoverTimeDisplay}</div>
@@ -576,6 +580,7 @@
     </div>
 </body>
 </html>
+
 
 
 
