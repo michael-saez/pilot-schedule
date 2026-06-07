@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T11:17:43Z",
+  "lastUpdated": "2026-06-07T11:30:11Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -251,6 +251,20 @@
           "startTimeUTC": "17:25",
           "endDateUTC": "06/09/26",
           "endTimeUTC": "02:17"
+        },
+        {
+          "type": "layover",
+          "city": "SDF",
+          "hotel": "Crowne Plaza Louisville Airport",
+          "restHours": "15:00",
+          "startDateLT": "06/08/26",
+          "startTimeLT": "22:17",
+          "endDateLT": "06/09/26",
+          "endTimeLT": "13:17",
+          "startDateUTC": "06/09/26",
+          "startTimeUTC": "02:17",
+          "endDateUTC": "06/09/26",
+          "endTimeUTC": "17:17"
         },
         {
           "type": "flight",
