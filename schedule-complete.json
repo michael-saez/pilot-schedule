@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T12:09:50Z",
+  "lastUpdated": "2026-06-07T12:15:57Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -440,7 +440,7 @@
           "startTimeLT": "13:50",
           "endDateLT": "04/22/26",
           "endTimeLT": "20:27",
-          "restHours": "76:37"
+          "restHours": "78:37"
         },
         {
           "type": "flight",
