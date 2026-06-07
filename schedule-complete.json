@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-05T04:15:04Z",
+  "lastUpdated": "2026-06-07T11:17:43Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -78,7 +78,7 @@
     {
       "tripId": "Jumpseats",
       "startLT": "04/02/26",
-      "endLT": "05/25/26",
+      "endLT": "06/09/26",
       "events": [
         {
           "type": "flight",
@@ -235,6 +235,38 @@
           "startTimeUTC": "05:20",
           "endDateUTC": "05/25/26",
           "endTimeUTC": "15:06"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS224",
+          "position": "JS",
+          "route": "CGN-SDF",
+          "aircraft": "74N",
+          "blockHours": "8:52",
+          "startDateLT": "06/08/26",
+          "startTimeLT": "19:25",
+          "endDateLT": "06/08/26",
+          "endTimeLT": "22:17",
+          "startDateUTC": "06/08/26",
+          "startTimeUTC": "17:25",
+          "endDateUTC": "06/09/26",
+          "endTimeUTC": "02:17"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS72",
+          "position": "JS",
+          "route": "SDF-ANC",
+          "aircraft": "74N",
+          "blockHours": "6:41",
+          "startDateLT": "06/09/26",
+          "startTimeLT": "13:17",
+          "endDateLT": "06/09/26",
+          "endTimeLT": "15:58",
+          "startDateUTC": "06/09/26",
+          "startTimeUTC": "17:17",
+          "endDateUTC": "06/09/26",
+          "endTimeUTC": "23:58"
         }
       ]
     },
