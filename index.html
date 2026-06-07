@@ -447,7 +447,7 @@
                     const startDisplay = parseMMDDYY(dispStartDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                     const endDisplay   = parseMMDDYY(dispEndDateLT).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                     const layoverTimeDisplay = `${startDisplay} ${dispStartTimeLT}<br/>→ ${endDisplay} ${dispEndTimeLT}<br/><strong>Rest: ${event.restHours || 'TBD'}</strong>`;
-                    const hotelInfoHtml = (event.hotelAddress || event.hotelPhone) ? `<div class="hotel-info">${event.hotelAddress ? `<span class="hotel-info-line">📍 ${event.hotelAddress}</span>` : ''}${event.hotelPhone ? `<span class="hotel-info-line">📞 ${event.hotelPhone}</span>` : ''}</div>` : '';
+                    const hotelInfoHtml = (event.hotelAddress || event.hotelPhone) ? `<div class="hotel-info">${event.hotelAddress ? `<span class="hotel-info-line">${event.hotelAddress}</span>` : ''}${event.hotelPhone ? `<span class="hotel-info-line">${event.hotelPhone}</span>` : ''}</div>` : '';
                     return `<div class="event ${pastClass}" data-date="${item.dateLocal}">
                         <div class="event-icon layover">🛏️</div>
                         <div class="event-details">
@@ -580,6 +580,7 @@
     </div>
 </body>
 </html>
+
 
 
 
