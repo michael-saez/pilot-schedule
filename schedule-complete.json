@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T12:15:57Z",
+  "lastUpdated": "2026-06-07T12:19:40Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -440,7 +440,7 @@
           "startTimeLT": "13:50",
           "endDateLT": "04/22/26",
           "endTimeLT": "20:27",
-          "restHours": "78:37"
+          "restHours": "76:37"
         },
         {
           "type": "flight",
@@ -912,7 +912,7 @@
     {
       "tripId": "A70735",
       "startLT": "05/29/26",
-      "endLT": "06/02/26",
+      "endLT": "06/08/26",
       "events": [
         {
           "type": "flight",
@@ -962,15 +962,15 @@
           "type": "layover",
           "city": "CGN",
           "hotel": "Cologne Marriott Hotel",
-          "restHours": "32:57",
+          "restHours": "140:55",
           "startDateLT": "06/02/26",
           "startTimeLT": "22:30",
-          "endDateLT": "06/04/26",
-          "endTimeLT": "07:27",
+          "endDateLT": "06/08/26",
+          "endTimeLT": "19:25",
           "startDateUTC": "06/02/26",
           "startTimeUTC": "20:30",
-          "endDateUTC": "06/04/26",
-          "endTimeUTC": "05:27"
+          "endDateUTC": "06/08/26",
+          "endTimeUTC": "17:25"
         }
       ]
     },
