@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T11:30:11Z",
+  "lastUpdated": "2026-06-07T12:00:08Z",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -264,7 +264,9 @@
           "startDateUTC": "06/09/26",
           "startTimeUTC": "02:17",
           "endDateUTC": "06/09/26",
-          "endTimeUTC": "17:17"
+          "endTimeUTC": "17:17",
+          "hotelAddress": "830 Philips Lane, Louisville, KY 40209",
+          "hotelPhone": "502-367-2251"
         },
         {
           "type": "flight",
