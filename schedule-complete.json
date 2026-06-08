@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T12:19:40Z",
+  "lastUpdated": "2026-06-08",
   "pilot": "Michael Saez",
   "base": "ANC",
   "trips": [
@@ -912,7 +912,7 @@
     {
       "tripId": "A70735",
       "startLT": "05/29/26",
-      "endLT": "06/08/26",
+      "endLT": "06/09/26",
       "events": [
         {
           "type": "flight",
@@ -962,15 +962,31 @@
           "type": "layover",
           "city": "CGN",
           "hotel": "Cologne Marriott Hotel",
-          "restHours": "140:55",
+          "restHours": "142:45",
           "startDateLT": "06/02/26",
           "startTimeLT": "22:30",
           "endDateLT": "06/08/26",
-          "endTimeLT": "19:25",
+          "endTimeLT": "21:15",
           "startDateUTC": "06/02/26",
           "startTimeUTC": "20:30",
           "endDateUTC": "06/08/26",
-          "endTimeUTC": "17:25"
+          "endTimeUTC": "19:15"
+        },
+        {
+          "type": "flight",
+          "flightNumber": "UPS214",
+          "position": "JS",
+          "route": "CGN-SDF",
+          "aircraft": "747",
+          "blockHours": "8:52",
+          "startDateLT": "06/08/26",
+          "startTimeLT": "21:15",
+          "endDateLT": "06/09/26",
+          "endTimeLT": "00:07",
+          "startDateUTC": "06/08/26",
+          "startTimeUTC": "19:15",
+          "endDateUTC": "06/09/26",
+          "endTimeUTC": "04:07"
         }
       ]
     },
