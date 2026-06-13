@@ -1,6 +1,6 @@
 // api/calendar.js
 // Vercel serverless function — returns a live .ics feed of Michael's pilot schedule.
-// Flights only (layovers excluded).
+// Flights + training/simulator events (layovers excluded).
 
 module.exports = async function handler(req, res) {
   // ── 1. Fetch schedule + airport lookup in parallel ───────────────────────
@@ -81,38 +81,64 @@ module.exports = async function handler(req, res) {
 
   for (const trip of schedule.trips) {
     for (const event of trip.events) {
-      if (event.type !== 'flight') continue;
 
-      const [orig, dest] = event.route.split('-');
-      const posLabel  = POSITION_LABEL[event.position] || event.position;
-      const aircraft  = event.aircraft ? ` · ${event.aircraft}` : '';
-      const cityRoute = `${city(orig)} → ${city(dest)}`;
+      if (event.type === 'flight') {
+        const [orig, dest] = event.route.split('-');
+        const posLabel  = POSITION_LABEL[event.position] || event.position;
+        const aircraft  = event.aircraft ? ` · ${event.aircraft}` : '';
+        const cityRoute = `${city(orig)} → ${city(dest)}`;
 
-      // Local time note — mirrors the website's "Local" column exactly
-      const depLabel  = fmtLocalDate(event.startDateLT);
-      const arrLabel  = fmtLocalDate(event.endDateLT);
-      const localNote = `${depLabel} ${event.startTimeLT} → ${arrLabel} ${event.endTimeLT} (Local)`;
+        // Local time note — mirrors the website's "Local" column exactly
+        const depLabel  = fmtLocalDate(event.startDateLT);
+        const arrLabel  = fmtLocalDate(event.endDateLT);
+        const localNote = `${depLabel} ${event.startTimeLT} → ${arrLabel} ${event.endTimeLT} (Local)`;
 
-      const dtstart = toICS(event.startDateUTC, event.startTimeUTC);
-      const dtend   = toICS(event.endDateUTC,   event.endTimeUTC);
-      const uid     = `${trip.tripId}-${event.flightNumber}-${dtstart}@michaelsaez.com`;
+        const dtstart = toICS(event.startDateUTC, event.startTimeUTC);
+        const dtend   = toICS(event.endDateUTC,   event.endTimeUTC);
+        const uid     = `${trip.tripId}-${event.flightNumber}-${dtstart}@michaelsaez.com`;
 
-      const summary     = `${event.flightNumber} ${cityRoute} (${event.position})`;
-      const description =
-        `${cityRoute}\\n` +
-        `${localNote}\\n` +
-        `${posLabel}${aircraft} · Block: ${event.blockHours}\\n` +
-        `Trip: ${trip.tripId}`;
+        const summary     = `${event.flightNumber} ${cityRoute} (${event.position})`;
+        const description =
+          `${cityRoute}\\n` +
+          `${localNote}\\n` +
+          `${posLabel}${aircraft} · Block: ${event.blockHours}\\n` +
+          `Trip: ${trip.tripId}`;
 
-      lines.push('BEGIN:VEVENT');
-      lines.push(fold(`UID:${uid}`));
-      lines.push(`DTSTAMP:${now}`);
-      lines.push(`DTSTART:${dtstart}`);
-      lines.push(`DTEND:${dtend}`);
-      lines.push(fold(`SUMMARY:${summary}`));
-      lines.push(fold(`DESCRIPTION:${description}`));
-      lines.push(`LOCATION:${city(dest)}`);
-      lines.push('END:VEVENT');
+        lines.push('BEGIN:VEVENT');
+        lines.push(fold(`UID:${uid}`));
+        lines.push(`DTSTAMP:${now}`);
+        lines.push(`DTSTART:${dtstart}`);
+        lines.push(`DTEND:${dtend}`);
+        lines.push(fold(`SUMMARY:${summary}`));
+        lines.push(fold(`DESCRIPTION:${description}`));
+        lines.push(`LOCATION:${city(dest)}`);
+        lines.push('END:VEVENT');
+
+      } else if (event.type === 'training') {
+        const dtstart = toICS(event.startDateUTC, event.startTimeUTC);
+        const dtend   = toICS(event.endDateUTC,   event.endTimeUTC);
+        const uid     = `${trip.tripId}-training-${dtstart}@michaelsaez.com`;
+
+        const depLabel  = fmtLocalDate(event.startDateLT);
+        const arrLabel  = fmtLocalDate(event.endDateLT);
+        const localNote = `${depLabel} ${event.startTimeLT} → ${arrLabel} ${event.endTimeLT} (Local)`;
+
+        const title       = event.description || 'Simulator Training';
+        const summary     = `🖥️ ${title}`;
+        const description =
+          `${localNote}\\n` +
+          `Trip: ${trip.tripId}`;
+
+        lines.push('BEGIN:VEVENT');
+        lines.push(fold(`UID:${uid}`));
+        lines.push(`DTSTAMP:${now}`);
+        lines.push(`DTSTART:${dtstart}`);
+        lines.push(`DTEND:${dtend}`);
+        lines.push(fold(`SUMMARY:${summary}`));
+        lines.push(fold(`DESCRIPTION:${description}`));
+        lines.push(`LOCATION:${event.city ? (airports[event.city] || event.city) : ''}`);
+        lines.push('END:VEVENT');
+      }
     }
   }
 
